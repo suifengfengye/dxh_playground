@@ -1,0 +1,16 @@
+# 忽略打包文件
+dist/
+build/
+*.min.js
+*.bundle.js
+
+# 忽略依赖
+node_modules/
+
+# 忽略锁文件
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# 忽略特定文件
+main.10194b6b9b54231fceed.js

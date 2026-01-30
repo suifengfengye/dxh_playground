@@ -1,0 +1,36 @@
+{
+  // 默认格式化工具
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  
+  // 保存时自动格式化
+  "editor.formatOnSave": true,
+  
+  // 粘贴时格式化
+  "editor.formatOnPaste": true,
+  
+  // 输入时格式化
+  "editor.formatOnType": true,
+  
+  // Prettier 配置
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.printWidth": 80,
+  "prettier.trailingComma": "es5",
+  "prettier.semi": true,
+  
+  // JavaScript 特定设置
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  
+  // JSON 文件设置
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  
+  // 忽略的文件
+  "prettier.ignorePath": ".prettierignore"
+}
