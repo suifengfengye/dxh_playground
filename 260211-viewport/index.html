@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .viewport-demo {
+            padding: 16px;
+            background: #111827;
+            color: #f9fafb;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #16a34a;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px 16px;
+            font-size: 14px;
+        }
+
+        ul {
+            list-style: none;
+            padding-inline-start: 0;
+            margin: 16px;
+        }
+
+        ul::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        ul li {
+            float: left;
+            width: 10%;
+            background-color: #f0f0f0;
+            border: 1px solid #d1d5db;
+            box-sizing: border-box;
+            padding: 8px 0;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 600px) {
+            .badge {
+                background: #dc2626;
+            }
+
+            ul li {
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="viewport-demo">
+            <div id="breakpoint" class="badge">Breakpoint: >600px</div>
+            <div class="metrics">
+                <div>documentElement.clientWidth: <span id="clientWidth"></span></div>
+                <div>window.innerWidth: <span id="innerWidth"></span></div>
+                <div>visualViewport.width: <span id="visualWidth"></span></div>
+                <div>screen.width: <span id="screenWidth"></span></div>
+                <div>devicePixelRatio: <span id="dpr"></span></div>
+            </div>
+        </div>
+        <ul>
+            <li>列表1</li>
+            <li>列表2</li>
+            <li>列表3</li>
+            <li>列表4</li>
+            <li>列表5</li>
+            <li>列表6</li>
+            <li>列表7</li>
+            <li>列表8</li>
+            <li>列表9</li>
+            <li>列表10</li>
+        </ul>
+    </div>
+    <script>
+        const clientWidthEl = document.getElementById('clientWidth');
+        const innerWidthEl = document.getElementById('innerWidth');
+        const visualWidthEl = document.getElementById('visualWidth');
+        const screenWidthEl = document.getElementById('screenWidth');
+        const dprEl = document.getElementById('dpr');
+        const breakpointEl = document.getElementById('breakpoint');
+        const mediaQuery = window.matchMedia('(max-width: 600px)');
+
+        const updateMetrics = () => {
+            clientWidthEl.textContent = String(document.documentElement.clientWidth);
+            innerWidthEl.textContent = String(window.innerWidth);
+            visualWidthEl.textContent = window.visualViewport ? String(Math.round(window.visualViewport.width)) : 'N/A';
+            screenWidthEl.textContent = String(window.screen.width);
+            dprEl.textContent = String(window.devicePixelRatio);
+            breakpointEl.textContent = mediaQuery.matches ? 'Breakpoint: ≤600px' : 'Breakpoint: >600px';
+        };
+
+        updateMetrics();
+        window.addEventListener('resize', updateMetrics);
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', updateMetrics);
+        }
+    </script>
+</body>
+</html>
