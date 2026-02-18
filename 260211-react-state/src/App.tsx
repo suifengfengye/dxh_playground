@@ -8,6 +8,7 @@ import { JotaiDemoV3 } from './components/JotaiDemoV3';
 // import { UseReducerDemoV3 } from './components/UseReducerDemoV3';
 // import { UseReducerDemoV2 } from './components/UseReducerDemoV2';
 // import { UseReducerDemo } from './components/UseReducerDemo';
+import { ReduxDemo1 } from './my-redux1/ReduxDemo1' 
 
 const App = () => {
     return (
@@ -20,7 +21,8 @@ const App = () => {
             {/* <ZustandDemoV3 /> */}
             {/* <JotaiDemo /> */}
             {/* <JotaiDemoV2 /> */}
-            <JotaiDemoV3 />
+            {/* <JotaiDemoV3 /> */}
+            <ReduxDemo1 />
         </div>
     );
 }
