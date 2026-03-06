@@ -1,1 +1,13 @@
-document.body.style ="background-color: #f0f0f0;"
+import { createApp, ref } from 'vue'
+
+const app = createApp({
+    setup() {
+        const message = ref('Hello Vue')
+        return {
+            message,
+        }
+    },
+    template: `<div>message: {{ message }}</div>`,
+})
+
+app.mount('#app')
