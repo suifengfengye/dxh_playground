@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import commonjs from 'vite-plugin-commonjs'
+import my_plugin from './plugins/my_plugin'
 
 export default defineConfig({
-    plugins: [Vue(), commonjs()],
+    plugins: [Vue(), commonjs(), my_plugin()],
     resolve: {
         alias: {
             "@": new URL('./src', import.meta.url).pathname,
