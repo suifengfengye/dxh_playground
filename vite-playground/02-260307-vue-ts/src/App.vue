@@ -26,7 +26,7 @@ onMounted(() => {
 
 <template>
 <div>
-    <h1>Hello Vue3-x</h1>
+    <h1>Hello Vue3-:smile:</h1>
     count: {{ count }}
     <div>
         <button @click="count += 1">+</button>
