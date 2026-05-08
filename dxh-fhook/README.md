@@ -115,3 +115,10 @@ pnpm spellcheck
 # 2. lint
 npx lint-staged
 ```
+
+非顶级git配置 husky生效:
+```shell
+git config core.hooksPath dxh-fhook/.husky
+```
+-> 拦截git的提交，并执行 dxh-fhook/.husky/pre-commit 脚本
+
