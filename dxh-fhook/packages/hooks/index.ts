@@ -3,13 +3,11 @@ export interface User {
   age: number
 }
 
-import path from 'path-browserify'
+// import { add } from './math'
+// import { multiply } from './math'
 
-import { add } from './math'
-import { multiply } from './math'
+// const href = window.location.href
 
-const href = window.location.href
+// const a = href
 
-const a = href
-
-console.log('hooks')
+// console.log('hooks')
