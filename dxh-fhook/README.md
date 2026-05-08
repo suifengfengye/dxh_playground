@@ -102,3 +102,16 @@ scripts脚本配置:
 ```
 
 cz-git的配置文件：commitlint.config.js
+
+husky 初始化命令：
+```shell
+# 执行后，会在项目根目录下生成.husky/pre-commit文件，里面可以编写提交前进行校验的命令
+npx husky init
+```
+
+```bash
+# 1. spellcheck
+pnpm spellcheck
+# 2. lint
+pnpm lint
+```

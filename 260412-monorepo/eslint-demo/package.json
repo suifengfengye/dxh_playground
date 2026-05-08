@@ -1,0 +1,21 @@
+{
+    "name": "eslint-demo",
+    "description": "Eslint Demo",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix"
+    },
+    "devDependencies": {
+        "typescript":"6.0.2",
+        "vite": "8.0.8",
+        "@vitejs/plugin-vue": "6.0.5",
+        "eslint": "10.2.0",
+        "typescript-eslint": "8.58.1"
+    },
+    "dependencies": {
+        "vue": "3.5.32"
+    }
+}
