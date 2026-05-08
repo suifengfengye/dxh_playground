@@ -113,5 +113,5 @@ npx husky init
 # 1. spellcheck
 pnpm spellcheck
 # 2. lint
-pnpm lint
+npx lint-staged
 ```
