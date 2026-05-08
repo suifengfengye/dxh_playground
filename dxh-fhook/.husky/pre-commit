@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-npm test
+# npm --prefix dxh-fhook test
+
+# 1. spellcheck
+pnpm --prefix dxh-fhook spellcheck
+# 2. lint
+npx --prefix dxh-fhook lint-staged
