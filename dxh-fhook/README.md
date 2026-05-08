@@ -92,6 +92,11 @@ scripts脚本配置:
 {
   "scripts": {
     "commit": "cz-git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-git"
+    }
   }
 }
 ```
