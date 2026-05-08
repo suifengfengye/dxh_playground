@@ -1,0 +1,18 @@
+{
+    "import": "@cspell/dict-lorem-ipsum/cspell-ext.json",
+    "caseSensitive": false,
+    "dictionaries": [
+        "dxh-words"
+    ],
+    "dictionaryDefinitions": [
+        {
+            "name": "dxh-words",
+            "path": "./.cspell/dxh-words.txt",
+            "addWords": true
+        }
+    ],
+    "ignorePaths": [
+        "**/node_modules/**",
+        "**/dist/**"
+    ]
+}
