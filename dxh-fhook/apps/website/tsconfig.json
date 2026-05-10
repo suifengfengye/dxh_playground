@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        // 在TS在ESM导入语法和CommonJS导出语法之间做兼容桥接，import React from 'react'
+        "esModuleInterop": true
+    },
+    "include": ["docs"],
+    "exclude": ["node_modules", "doc_build"],
+    "mdx": {
+        "checkMdx": true
+    }
+}

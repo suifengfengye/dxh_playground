@@ -3,14 +3,18 @@ export interface User {
   age: number
 }
 
-import { Target, VERSION } from '@dxh-fhook/core'
+import { VERSION } from '@dxh-fhook/core'
 
 import { add, heyi, multiply } from './math'
+
+// 1. hook version
+export const useVersion = () => {
+  return VERSION
+}
 
 export default {
   add,
   multiply,
   heyi,
-  VERSION,
-  Target
+  VERSION
 }

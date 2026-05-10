@@ -1,0 +1,22 @@
+{
+    "name": "@dxh-fhook/website",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "rspress dev",
+        "build": "rspress build",
+        "preview": "rspress preview"
+    },
+    "packageManager":"pnpm@10.33.4",
+    "dependencies": {
+        "@dxh-fhook/hooks":"workspace:*",
+        "@types/react": "^18.0.0",
+        "@types/react-dom": "^18.0.0"
+    },
+    "devDependencies": {
+        "rspress": "1.47.1"
+    },
+    "peerDependencies": {
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0"
+    }
+}

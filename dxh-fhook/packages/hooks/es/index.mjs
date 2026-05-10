@@ -1,5 +1,5 @@
 // src/index.ts
-import { VERSION, Target } from "@dxh-fhook/core";
+import { VERSION } from "@dxh-fhook/core";
 
 // src/math.ts
 var add = (a, b) => {
@@ -11,14 +11,17 @@ var multiply = (a, b) => {
 var heyi = "dxh";
 
 // src/index.ts
+var useVersion = () => {
+  return VERSION;
+};
 var index_default = {
   add,
   multiply,
   heyi,
-  VERSION,
-  Target
+  VERSION
 };
 export {
-  index_default as default
+  index_default as default,
+  useVersion
 };
 //# sourceMappingURL=index.mjs.map

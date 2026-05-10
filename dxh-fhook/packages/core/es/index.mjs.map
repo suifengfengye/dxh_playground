@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/index.ts"],"sourcesContent":["export const VERSION = '1.0.0'\n\nexport const Target = \"Global_dxh\""],"mappings":";AAAO,IAAM,UAAU;AAEhB,IAAM,SAAS;","names":[]}
+{"version":3,"sources":["../src/index.ts"],"sourcesContent":["export const VERSION = '1.0.0'\n\nexport const Target = 'Global_dxh'\n"],"mappings":";AAAO,IAAM,UAAU;AAEhB,IAAM,SAAS;","names":[]}

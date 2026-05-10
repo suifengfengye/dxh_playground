@@ -3,3 +3,5 @@
 **/dist/**
 
 .cspellcache
+
+doc_build

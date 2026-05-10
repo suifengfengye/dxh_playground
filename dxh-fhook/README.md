@@ -138,7 +138,8 @@ git config core.hooksPath dxh-fhook/.husky
       "persistent": true,
       "cache": false
     }
-  }
+  },
+  "ui": "tui"
 }
 ```
 
@@ -148,4 +149,41 @@ git config core.hooksPath dxh-fhook/.husky
     "build": "turbo build"
   }
 }
+```
+
+# 8. rspress - 构建库的文档
+
+```json
+{
+  "scripts": {
+    "dev": "respress dev",
+    "build": "respress build",
+    "preview": "respress preview",
+  }
+}
+```
+默认启动入口：docs/index.md
+
+配置文件 rspress.config.ts
+
+```ts
+import { defineConfig } from 'rspress/config'
+
+export default defineConfig({
+  title: "dxh-fhooks"
+})
+```
+
+-> mdx文件：可以在md中编写react组件
+
+mdx home的配置:
+```
+---
+pageType: home
+
+hero:
+  name: dxh-fhooks
+  text: react基础库
+  tagline: 团队 react 自定义基础库
+---
 ```
