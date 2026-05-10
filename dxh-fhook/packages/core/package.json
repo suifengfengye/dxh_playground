@@ -6,7 +6,8 @@
   "module": "es/index.mjs",
   "types": "es/index.d.mts",
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "keywords": [],
   "author": "",

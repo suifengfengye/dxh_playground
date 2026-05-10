@@ -1,3 +1,6 @@
+// src/index.ts
+import { VERSION, Target } from "@dxh-fhook/core";
+
 // src/math.ts
 var add = (a, b) => {
   return a + b;
@@ -11,7 +14,9 @@ var heyi = "dxh";
 var index_default = {
   add,
   multiply,
-  heyi
+  heyi,
+  VERSION,
+  Target
 };
 export {
   index_default as default

@@ -1,0 +1,18 @@
+
+
+> @dxh-fhook/hooks@1.0.0 build /Users/jianfehuang/Documents/dxh_playground/dxh_playground/dxh-fhook/packages/hooks
+> tsup
+
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v8.5.1
+[34mCLI[39m Using tsup config: /Users/jianfehuang/Documents/dxh_playground/dxh_playground/dxh-fhook/packages/hooks/tsup.config.ts
+[34mCLI[39m Target: node16
+[34mCLI[39m Cleaning output folder
+[34mESM[39m Build start
+[32mESM[39m [1mes/index.mjs     [22m[32m332.00 B[39m
+[32mESM[39m [1mes/index.mjs.map [22m[32m704.00 B[39m
+[32mESM[39m ⚡️ Build success in 8ms
+DTS Build start
+DTS ⚡️ Build success in 277ms
+DTS es/index.d.mts 257.00 B

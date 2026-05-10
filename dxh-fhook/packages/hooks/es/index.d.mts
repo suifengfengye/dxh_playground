@@ -6,6 +6,8 @@ declare const _default: {
     add: (a: number, b: number) => number;
     multiply: (a: number, b: number) => number;
     heyi: string;
+    VERSION: string;
+    Target: string;
 };
 
 export { type User, _default as default };

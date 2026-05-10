@@ -122,3 +122,30 @@ git config core.hooksPath dxh-fhook/.husky
 ```
 -> 拦截git的提交，并执行 dxh-fhook/.husky/pre-commit 脚本
 
+
+# 7. turbo - 控制构建顺序
+
+```json
+// turbo.json
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["build"],
+      "outputs": ["es/**"]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    }
+  }
+}
+```
+
+```json
+{
+  "scripts": {
+    "build": "turbo build"
+  }
+}
+```
