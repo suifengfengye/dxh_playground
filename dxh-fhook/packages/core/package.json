@@ -2,14 +2,16 @@
   "name": "@dxh-fhook/core",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "es/index.js",
+  "module": "es/index.mjs",
+  "types": "es/index.d.mts",
   "scripts": {
+    "build": "tsup"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.30.3",
   "devDependencies": {
-    "tsup": "8.5.1"
   }
 }

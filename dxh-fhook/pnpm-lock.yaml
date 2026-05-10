@@ -47,6 +47,9 @@ importers:
       prettier:
         specifier: 3.8.3
         version: 3.8.3
+      tsup:
+        specifier: 8.5.1
+        version: 8.5.1(jiti@2.6.1)(typescript@6.0.3)(yaml@2.8.4)
       typescript:
         specifier: 6.0.3
         version: 6.0.3
@@ -54,17 +57,13 @@ importers:
         specifier: 8.59.2
         version: 8.59.2(eslint@10.3.0(jiti@2.6.1))(typescript@6.0.3)
 
-  packages/core:
-    devDependencies:
-      tsup:
-        specifier: 8.5.1
-        version: 8.5.1(jiti@2.6.1)(typescript@6.0.3)(yaml@2.8.4)
+  packages/core: {}
 
   packages/hooks:
-    devDependencies:
-      tsup:
-        specifier: 8.5.1
-        version: 8.5.1(jiti@2.6.1)(typescript@6.0.3)(yaml@2.8.4)
+    dependencies:
+      '@dxh-fhook/core':
+        specifier: workspace:*
+        version: link:../core
 
 packages:
 

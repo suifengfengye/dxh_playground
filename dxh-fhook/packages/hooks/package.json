@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.33.4",
+  "dependencies": {
+    "@dxh-fhook/core": "workspace:*"
+  },
   "devDependencies": {
-    "tsup": "8.5.1"
   }
 }

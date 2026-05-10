@@ -3,10 +3,13 @@ export interface User {
   age: number
 }
 
+import { VERSION } from '@dxh-fhook/core'
+
 import { add, heyi, multiply } from './math'
 
 export default {
   add,
   multiply,
-  heyi
+  heyi,
+  VERSION
 }
