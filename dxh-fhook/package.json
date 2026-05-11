@@ -10,7 +10,7 @@
     "prepare": "husky",
     "build": "turbo build",
     "dev": "turbo dev",
-    "publish:hooks": "pnpm --filter=packages/hooks publish"
+    "publish:hooks": "pnpm --filter @dxh-fhook/hooks publish"
   },
   "keywords": [],
   "author": "",
