@@ -5,6 +5,9 @@
   "main": "dist/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.mts",
+  "files": [
+    "es"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"
@@ -16,6 +19,5 @@
   "dependencies": {
     "@dxh-fhook/core": "workspace:*"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

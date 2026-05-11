@@ -104,6 +104,7 @@ scripts脚本配置:
 cz-git的配置文件：commitlint.config.js
 
 husky 初始化命令：
+
 ```shell
 # 执行后，会在项目根目录下生成.husky/pre-commit文件，里面可以编写提交前进行校验的命令
 npx husky init
@@ -117,11 +118,12 @@ npx lint-staged
 ```
 
 非顶级git配置 husky生效:
+
 ```shell
 git config core.hooksPath dxh-fhook/.husky
 ```
--> 拦截git的提交，并执行 dxh-fhook/.husky/pre-commit 脚本
 
+-> 拦截git的提交，并执行 dxh-fhook/.husky/pre-commit 脚本
 
 # 7. turbo - 控制构建顺序
 
@@ -158,10 +160,11 @@ git config core.hooksPath dxh-fhook/.husky
   "scripts": {
     "dev": "respress dev",
     "build": "respress build",
-    "preview": "respress preview",
+    "preview": "respress preview"
   }
 }
 ```
+
 默认启动入口：docs/index.md
 
 配置文件 rspress.config.ts
@@ -170,13 +173,14 @@ git config core.hooksPath dxh-fhook/.husky
 import { defineConfig } from 'rspress/config'
 
 export default defineConfig({
-  title: "dxh-fhooks"
+  title: 'dxh-fhooks'
 })
 ```
 
 -> mdx文件：可以在md中编写react组件
 
 mdx home的配置:
+
 ```
 ---
 pageType: home
@@ -186,4 +190,14 @@ hero:
   text: react基础库
   tagline: 团队 react 自定义基础库
 ---
+```
+
+# 9. 发布
+
+控制发布文件/目录，在packages.json中配置
+
+```json
+{
+  "files": ["en"]
+}
 ```
