@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.ts"],"sourcesContent":["export default {\n    utils: () => {\n        return 1 + 1\n    }\n}\n"],"mappings":";AAAA,IAAO,gBAAQ;AAAA,EACX,OAAO,MAAM;AACT,WAAO,IAAI;AAAA,EACf;AACJ;","names":[]}
