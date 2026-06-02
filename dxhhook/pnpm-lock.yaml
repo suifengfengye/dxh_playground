@@ -12,6 +12,15 @@ importers:
         specifier: ^1.16.1
         version: 1.16.1
 
+  packages/core:
+    devDependencies:
+      tsup:
+        specifier: 8.5.1
+        version: 8.5.1(typescript@6.0.3)
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+
   packages/hooks:
     devDependencies:
       tsup:
