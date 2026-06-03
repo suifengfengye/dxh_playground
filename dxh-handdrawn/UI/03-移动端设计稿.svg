@@ -1,0 +1,45 @@
+<svg width="430" height="1320" viewBox="0 0 430 1320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="430" height="1320" rx="36" fill="#070B19"/>
+  <rect x="16" y="20" width="398" height="58" rx="18" fill="#0F0F23" stroke="#2A3358"/>
+  <text x="36" y="56" fill="#F8FAFC" font-size="20" font-family="Arial, sans-serif" font-weight="700">DXH Handdrawn</text>
+  <text x="253" y="56" fill="#A8B0CC" font-size="14" font-family="Arial, sans-serif">Mobile Preview</text>
+
+  <rect x="16" y="98" width="398" height="256" rx="24" fill="#0F1428" stroke="#2A3358"/>
+  <text x="34" y="136" fill="#F8FAFC" font-size="24" font-family="Arial, sans-serif" font-weight="700">一句话生成手绘视频</text>
+  <text x="34" y="164" fill="#A8B0CC" font-size="14" font-family="Arial, sans-serif">移动端优先保证输入和主 CTA 可快速触达</text>
+  <rect x="34" y="186" width="362" height="94" rx="18" fill="#151B31" stroke="#36406D"/>
+  <text x="52" y="218" fill="#A8B0CC" font-size="14" font-family="Arial, sans-serif">提示词输入框</text>
+  <text x="52" y="248" fill="#F8FAFC" font-size="16" font-family="Arial, sans-serif">治愈系早餐手绘过程，节奏舒缓，适</text>
+  <text x="52" y="272" fill="#F8FAFC" font-size="16" font-family="Arial, sans-serif">合小红书发布，带旁白和结尾文案</text>
+  <rect x="34" y="298" width="362" height="44" rx="16" fill="#E11D48"/>
+  <text x="146" y="326" fill="#FFFFFF" font-size="18" font-family="Arial, sans-serif" font-weight="700">开始生成</text>
+
+  <text x="16" y="396" fill="#F8FAFC" font-size="22" font-family="Arial, sans-serif" font-weight="700">适配预览</text>
+  <text x="16" y="422" fill="#A8B0CC" font-size="14" font-family="Arial, sans-serif">移动端改为纵向卡片流，支持横向滑看分镜</text>
+
+  <rect x="16" y="444" width="398" height="208" rx="24" fill="#12172A" stroke="#2A3358"/>
+  <text x="34" y="478" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif" font-weight="700">A. 脚本拆解预览</text>
+  <rect x="34" y="498" width="362" height="44" rx="14" fill="#181F38"/>
+  <text x="52" y="526" fill="#F8FAFC" font-size="14" font-family="Arial, sans-serif">01 起稿：俯拍纸面，落笔切入</text>
+  <rect x="34" y="552" width="362" height="44" rx="14" fill="#181F38"/>
+  <text x="52" y="580" fill="#F8FAFC" font-size="14" font-family="Arial, sans-serif">02 上色：暖色调马克笔逐层铺开</text>
+  <rect x="34" y="606" width="362" height="28" rx="14" fill="#221A3E"/>
+  <text x="148" y="625" fill="#D8C9FF" font-size="13" font-family="Arial, sans-serif">查看完整脚本</text>
+
+  <rect x="16" y="674" width="398" height="264" rx="24" fill="#12172A" stroke="#2A3358"/>
+  <text x="34" y="708" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif" font-weight="700">B. 画面分镜预览</text>
+  <rect x="34" y="734" width="104" height="148" rx="18" fill="#1B223E"/>
+  <rect x="154" y="734" width="104" height="148" rx="18" fill="#242D4F"/>
+  <rect x="274" y="734" width="104" height="148" rx="18" fill="#2D3760"/>
+  <text x="34" y="908" fill="#A8B0CC" font-size="14" font-family="Arial, sans-serif">移动端使用横向滑动卡片，提高可读性</text>
+
+  <rect x="16" y="960" width="398" height="304" rx="24" fill="#0F1428" stroke="#2A3358"/>
+  <text x="34" y="994" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif" font-weight="700">C. 成片时间轴预览</text>
+  <rect x="34" y="1018" width="362" height="160" rx="20" fill="#191F36"/>
+  <polygon points="182,1062 182,1136 244,1099" fill="#F8FAFC"/>
+  <rect x="34" y="1198" width="82" height="8" rx="4" fill="#E11D48"/>
+  <rect x="124" y="1198" width="108" height="8" rx="4" fill="#5B6AAE"/>
+  <rect x="240" y="1198" width="74" height="8" rx="4" fill="#F59E0B"/>
+  <rect x="322" y="1198" width="74" height="8" rx="4" fill="#22C55E"/>
+  <text x="34" y="1234" fill="#A8B0CC" font-size="14" font-family="Arial, sans-serif">优先保留成片感知，不展示过细参数</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg width="1024" height="1366" viewBox="0 0 1024 1366" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1366" fill="#070B19"/>
+  <rect x="24" y="24" width="976" height="72" rx="20" fill="#0F0F23" stroke="#2A3358"/>
+  <text x="52" y="68" fill="#F8FAFC" font-size="26" font-family="Arial, sans-serif" font-weight="700">DXH Handdrawn</text>
+  <text x="264" y="68" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">Tablet Preview</text>
+
+  <rect x="24" y="120" width="976" height="250" rx="28" fill="#0F1428" stroke="#2A3358"/>
+  <text x="56" y="168" fill="#F8FAFC" font-size="28" font-family="Arial, sans-serif" font-weight="700">输入区置顶，方便平板单手操作</text>
+  <rect x="56" y="198" width="912" height="110" rx="20" fill="#151B31" stroke="#36406D"/>
+  <text x="84" y="236" fill="#A8B0CC" font-size="16" font-family="Arial, sans-serif">提示词输入框</text>
+  <text x="84" y="274" fill="#F8FAFC" font-size="20" font-family="Arial, sans-serif">生成一个小红书风格的手绘早餐过程视频，温柔旁白，节奏慢一点</text>
+  <rect x="56" y="326" width="220" height="56" rx="20" fill="#E11D48"/>
+  <text x="118" y="361" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">开始生成</text>
+  <rect x="292" y="336" width="220" height="14" rx="7" fill="#1B2240"/>
+  <rect x="292" y="336" width="134" height="14" rx="7" fill="#E11D48"/>
+  <text x="292" y="365" fill="#A8B0CC" font-size="16" font-family="Arial, sans-serif">生成进度 61%</text>
+
+  <text x="24" y="430" fill="#F8FAFC" font-size="28" font-family="Arial, sans-serif" font-weight="700">适配预览 3 板块</text>
+  <text x="24" y="464" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">平板端采用 2 + 1 布局，先看内容，再看成片节奏</text>
+
+  <rect x="24" y="494" width="472" height="336" rx="28" fill="#12172A" stroke="#2A3358"/>
+  <text x="56" y="540" fill="#F8FAFC" font-size="22" font-family="Arial, sans-serif" font-weight="700">A. 脚本拆解预览</text>
+  <rect x="56" y="568" width="408" height="64" rx="18" fill="#181F38"/>
+  <text x="80" y="606" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif">开场：展示空白纸面和早餐草图标题</text>
+  <rect x="56" y="648" width="408" height="64" rx="18" fill="#181F38"/>
+  <text x="80" y="686" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif">中段：线稿 -> 上色 -> 细节刻画</text>
+  <rect x="56" y="728" width="408" height="64" rx="18" fill="#181F38"/>
+  <text x="80" y="766" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif">结尾：成品展示 + 小红书发布文案</text>
+
+  <rect x="528" y="494" width="472" height="336" rx="28" fill="#12172A" stroke="#2A3358"/>
+  <text x="560" y="540" fill="#F8FAFC" font-size="22" font-family="Arial, sans-serif" font-weight="700">B. 画面分镜预览</text>
+  <rect x="560" y="576" width="120" height="160" rx="18" fill="#1B223E"/>
+  <rect x="700" y="576" width="120" height="160" rx="18" fill="#242D4F"/>
+  <rect x="840" y="576" width="120" height="160" rx="18" fill="#2D3760"/>
+  <text x="560" y="774" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">三张关键分镜并列展示，适合横屏预览</text>
+
+  <rect x="24" y="862" width="976" height="436" rx="28" fill="#0F1428" stroke="#2A3358"/>
+  <text x="56" y="910" fill="#F8FAFC" font-size="22" font-family="Arial, sans-serif" font-weight="700">C. 成片时间轴预览</text>
+  <rect x="56" y="944" width="912" height="228" rx="24" fill="#191F36"/>
+  <polygon points="476,1000 476,1090 550,1045" fill="#F8FAFC"/>
+  <rect x="56" y="1200" width="120" height="10" rx="5" fill="#E11D48"/>
+  <rect x="188" y="1200" width="190" height="10" rx="5" fill="#5B6AAE"/>
+  <rect x="390" y="1200" width="160" height="10" rx="5" fill="#F59E0B"/>
+  <rect x="562" y="1200" width="120" height="10" rx="5" fill="#22C55E"/>
+  <rect x="694" y="1200" width="128" height="10" rx="5" fill="#8B5CF6"/>
+  <text x="56" y="1242" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">更强调时间轴宽度，方便平板端查看转场、文案和 BGM 节点</text>
+</svg>

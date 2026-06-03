@@ -1,0 +1,86 @@
+<svg width="1440" height="1024" viewBox="0 0 1440 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="1024" fill="#070B19"/>
+  <rect x="24" y="24" width="1392" height="72" rx="20" fill="#0F0F23" stroke="#2A3358"/>
+  <text x="56" y="68" fill="#F8FAFC" font-size="28" font-family="Arial, sans-serif" font-weight="700">DXH Handdrawn</text>
+  <text x="284" y="68" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">小红书手动绘画视频生成系统</text>
+  <rect x="1128" y="42" width="120" height="36" rx="18" fill="#181F38"/>
+  <text x="1157" y="65" fill="#F8FAFC" font-size="16" font-family="Arial, sans-serif">草稿模式</text>
+  <rect x="1262" y="42" width="120" height="36" rx="18" fill="#E11D48"/>
+  <text x="1294" y="65" fill="#FFFFFF" font-size="16" font-family="Arial, sans-serif" font-weight="700">导出占位</text>
+
+  <rect x="24" y="120" width="360" height="860" rx="28" fill="#0F1428" stroke="#2A3358"/>
+  <text x="56" y="170" fill="#F8FAFC" font-size="30" font-family="Arial, sans-serif" font-weight="700">输入创作意图</text>
+  <text x="56" y="204" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">一句话描述你想要的手绘过程视频</text>
+
+  <rect x="56" y="236" width="296" height="188" rx="20" fill="#151B31" stroke="#36406D"/>
+  <text x="76" y="274" fill="#A8B0CC" font-size="16" font-family="Arial, sans-serif">提示词输入框</text>
+  <text x="76" y="310" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif">春日治愈系早餐插画，从铅笔起稿到马克笔</text>
+  <text x="76" y="340" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif">上色，镜头节奏舒缓，适合小红书发布</text>
+
+  <text x="56" y="466" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif" font-weight="700">风格标签</text>
+  <rect x="56" y="486" width="84" height="36" rx="18" fill="#221A3E"/>
+  <text x="79" y="509" fill="#D8C9FF" font-size="15" font-family="Arial, sans-serif">治愈感</text>
+  <rect x="150" y="486" width="96" height="36" rx="18" fill="#2B1A2E"/>
+  <text x="176" y="509" fill="#FFC4D6" font-size="15" font-family="Arial, sans-serif">手绘过程</text>
+  <rect x="256" y="486" width="78" height="36" rx="18" fill="#2B261A"/>
+  <text x="278" y="509" fill="#FFD89B" font-size="15" font-family="Arial, sans-serif">慢节奏</text>
+
+  <rect x="56" y="550" width="296" height="60" rx="20" fill="#E11D48"/>
+  <text x="158" y="588" fill="#FFFFFF" font-size="22" font-family="Arial, sans-serif" font-weight="700">开始生成</text>
+
+  <text x="56" y="652" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif" font-weight="700">生成状态</text>
+  <rect x="56" y="674" width="296" height="14" rx="7" fill="#1B2240"/>
+  <rect x="56" y="674" width="176" height="14" rx="7" fill="#E11D48"/>
+  <text x="56" y="716" fill="#A8B0CC" font-size="16" font-family="Arial, sans-serif">正在解析提示词、拆分分镜、合成时间轴</text>
+
+  <rect x="56" y="752" width="296" height="180" rx="20" fill="#12172A" stroke="#2A3358"/>
+  <text x="76" y="790" fill="#F8FAFC" font-size="18" font-family="Arial, sans-serif" font-weight="700">参数摘要</text>
+  <text x="76" y="826" fill="#A8B0CC" font-size="16" font-family="Arial, sans-serif">视频时长：45s</text>
+  <text x="76" y="854" fill="#A8B0CC" font-size="16" font-family="Arial, sans-serif">画面比例：9:16</text>
+  <text x="76" y="882" fill="#A8B0CC" font-size="16" font-family="Arial, sans-serif">叙事节奏：舒缓治愈</text>
+  <text x="76" y="910" fill="#A8B0CC" font-size="16" font-family="Arial, sans-serif">目标平台：小红书</text>
+
+  <text x="420" y="170" fill="#F8FAFC" font-size="30" font-family="Arial, sans-serif" font-weight="700">适配预览</text>
+  <text x="420" y="204" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">3 个板块分别验证脚本、画面和成片节奏</text>
+
+  <rect x="420" y="236" width="312" height="340" rx="28" fill="#12172A" stroke="#2A3358"/>
+  <text x="448" y="278" fill="#F8FAFC" font-size="22" font-family="Arial, sans-serif" font-weight="700">A. 脚本拆解预览</text>
+  <rect x="448" y="300" width="110" height="28" rx="14" fill="#21193A"/>
+  <text x="473" y="319" fill="#D8C9FF" font-size="14" font-family="Arial, sans-serif">镜头脚本</text>
+  <rect x="448" y="348" width="256" height="58" rx="16" fill="#181F38"/>
+  <text x="468" y="382" fill="#F8FAFC" font-size="16" font-family="Arial, sans-serif">01 起稿：铅笔勾勒早餐轮廓</text>
+  <rect x="448" y="420" width="256" height="58" rx="16" fill="#181F38"/>
+  <text x="468" y="454" fill="#F8FAFC" font-size="16" font-family="Arial, sans-serif">02 上色：马克笔渐变铺色</text>
+  <rect x="448" y="492" width="256" height="58" rx="16" fill="#181F38"/>
+  <text x="468" y="526" fill="#F8FAFC" font-size="16" font-family="Arial, sans-serif">03 收尾：高光和文案收束</text>
+
+  <rect x="752" y="236" width="312" height="340" rx="28" fill="#12172A" stroke="#2A3358"/>
+  <text x="780" y="278" fill="#F8FAFC" font-size="22" font-family="Arial, sans-serif" font-weight="700">B. 画面分镜预览</text>
+  <rect x="780" y="300" width="110" height="28" rx="14" fill="#2B261A"/>
+  <text x="804" y="319" fill="#FFD89B" font-size="14" font-family="Arial, sans-serif">关键画面</text>
+  <rect x="780" y="348" width="118" height="154" rx="18" fill="#1B223E"/>
+  <rect x="912" y="348" width="118" height="154" rx="18" fill="#242D4F"/>
+  <rect x="846" y="516" width="118" height="32" rx="16" fill="#E11D48"/>
+  <text x="872" y="537" fill="#FFFFFF" font-size="14" font-family="Arial, sans-serif">展开查看</text>
+  <text x="780" y="534" fill="#A8B0CC" font-size="15" font-family="Arial, sans-serif">镜头 1 构图: 俯拍</text>
+  <text x="780" y="558" fill="#A8B0CC" font-size="15" font-family="Arial, sans-serif">镜头 2 绘制重点: 面包纹理</text>
+
+  <rect x="1084" y="236" width="332" height="340" rx="28" fill="#12172A" stroke="#2A3358"/>
+  <text x="1112" y="278" fill="#F8FAFC" font-size="22" font-family="Arial, sans-serif" font-weight="700">C. 成片时间轴预览</text>
+  <rect x="1112" y="308" width="276" height="154" rx="20" fill="#191F36"/>
+  <polygon points="1234,350 1234,420 1290,385" fill="#F8FAFC"/>
+  <rect x="1112" y="490" width="48" height="8" rx="4" fill="#E11D48"/>
+  <rect x="1168" y="490" width="88" height="8" rx="4" fill="#5B6AAE"/>
+  <rect x="1264" y="490" width="56" height="8" rx="4" fill="#F59E0B"/>
+  <rect x="1328" y="490" width="60" height="8" rx="4" fill="#22C55E"/>
+  <text x="1112" y="530" fill="#A8B0CC" font-size="15" font-family="Arial, sans-serif">封面 -> 起稿 -> 上色 -> 完稿 -> 发布文案</text>
+  <text x="1112" y="558" fill="#A8B0CC" font-size="15" font-family="Arial, sans-serif">适配 9:16 发布节奏和小红书停留感</text>
+
+  <rect x="420" y="600" width="996" height="380" rx="28" fill="#0F1428" stroke="#2A3358"/>
+  <text x="452" y="646" fill="#F8FAFC" font-size="24" font-family="Arial, sans-serif" font-weight="700">设计说明摘要</text>
+  <text x="452" y="686" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">1. 左侧保持最短输入路径，突出“开始生成”。</text>
+  <text x="452" y="722" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">2. 右侧 3 块预览分别回答：内容对不对、画面对不对、成片节奏对不对。</text>
+  <text x="452" y="758" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">3. 视觉以深色视频创作台为底，CTA 用玫红形成强识别。</text>
+  <text x="452" y="794" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">4. 卡片圆角较大，边框轻发光，强调创作产品而非后台系统。</text>
+  <text x="452" y="830" fill="#A8B0CC" font-size="18" font-family="Arial, sans-serif">5. 预留刷新、展开、导出等二级动作，后续可进入开发阶段。</text>
+</svg>
