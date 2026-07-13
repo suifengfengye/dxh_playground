@@ -58,7 +58,20 @@ while True:
 
     # agent ReAct循环 
     while True:
-        ...
-
+        print("Agent:", end="")
+        for type, chunk in agent.stream(
+            input=next_input,
+            stream_mode=["messages", "updates"],
+            config=config
+        ):
+            # print(type, chunk)
+            if type == "messages":
+                message_chunk, metadata = chunk
+                print(message_chunk.content, end="")
+            elif type == "updates":
+                # tool_calls = chunk["tool_calls"] or []
+                # print("tool_calls")
+                print(f"updates:{chunk}")
+                
 
 
