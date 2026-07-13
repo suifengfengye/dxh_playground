@@ -72,6 +72,37 @@ while True:
                 # tool_calls = chunk["tool_calls"] or []
                 # print("tool_calls")
                 print(f"updates:{chunk}")
+                if chunk["__interrupt__"] and chunk["__interrupt__"][0]:
+                    interrupt_info = chunk["__interrupt__"][0]
+                    action_requests = interrupt_info.value["action_requests"][0]
+                    review_configs = interrupt_info.value["review_configs"][0]
+                    print(f"如下工具需要您的审批:{action_requests["name"]},参数:{action_requests["name"]}")
+                    while True:
+                        approval_input = input(f"请输入审批信息,{review_configs["allowed_decisions"]}:").lower()
+                        if approval_input == "approve":
+                            resume_cmd = Command(resume={
+                                "decisions": [
+                                    {
+                                        "type": "approve"
+                                    }
+                                ]
+                            })
+                            # agent.stream(resume_cmd, config=config, version="v2")
+                            break
+                        elif approval_input == 'reject':
+                            resume_cmd = Command(resume={
+                                "decisions": [
+                                    {
+                                        "type": "reject",
+                                        "message": "大家都不想加班吧！"
+                                    }
+                                ]
+                            })
+                            # agent.stream(resume_cmd, config=config, version="v2")
+                            break
+                        else:
+                            continue
+
                 
 
 
