@@ -1,3 +1,3 @@
-module github.com/suifengfengye/go-tiny-claw
+module github.com/dxh/go-tiny-claw
 
 go 1.26.4
