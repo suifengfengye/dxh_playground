@@ -59,6 +59,9 @@ while True:
     # agent ReAct循环 
     while True:
         print("Agent:", end="")
+        
+        interrupted = False
+
         for type, chunk in agent.stream(
             input=next_input,
             stream_mode=["messages", "updates"],
@@ -72,7 +75,7 @@ while True:
                 # tool_calls = chunk["tool_calls"] or []
                 # print("tool_calls")
                 print(f"updates:{chunk}")
-                if chunk["__interrupt__"] and chunk["__interrupt__"][0]:
+                if chunk.get("__interrupt__", None) and chunk.get("__interrupt__", None)[0]:
                     interrupt_info = chunk["__interrupt__"][0]
                     action_requests = interrupt_info.value["action_requests"][0]
                     review_configs = interrupt_info.value["review_configs"][0]
@@ -80,7 +83,8 @@ while True:
                     while True:
                         approval_input = input(f"请输入审批信息,{review_configs["allowed_decisions"]}:").lower()
                         if approval_input == "approve":
-                            resume_cmd = Command(resume={
+                            interrupted = True
+                            next_input = Command(resume={
                                 "decisions": [
                                     {
                                         "type": "approve"
@@ -90,7 +94,8 @@ while True:
                             # agent.stream(resume_cmd, config=config, version="v2")
                             break
                         elif approval_input == 'reject':
-                            resume_cmd = Command(resume={
+                            interrupted = True
+                            next_input = Command(resume={
                                 "decisions": [
                                     {
                                         "type": "reject",
@@ -103,6 +108,9 @@ while True:
                         else:
                             continue
 
-                
+        if interrupted:
+            continue
+        else:
+            break
 
 
