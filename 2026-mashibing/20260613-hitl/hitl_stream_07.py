@@ -72,45 +72,43 @@ while True:
                 message_chunk, metadata = chunk
                 print(message_chunk.content, end="")
             elif type == "updates":
-                # tool_calls = chunk["tool_calls"] or []
-                # print("tool_calls")
-                print(f"updates:{chunk}")
-                if chunk.get("__interrupt__", None) and chunk.get("__interrupt__", None)[0]:
-                    interrupt_info = chunk["__interrupt__"][0]
-                    action_requests = interrupt_info.value["action_requests"][0]
-                    review_configs = interrupt_info.value["review_configs"][0]
-                    print(f"如下工具需要您的审批:{action_requests["name"]},参数:{action_requests["name"]}")
-                    while True:
-                        approval_input = input(f"请输入审批信息,{review_configs["allowed_decisions"]}:").lower()
-                        if approval_input == "approve":
-                            interrupted = True
-                            next_input = Command(resume={
-                                "decisions": [
-                                    {
+                if chunk.get("__interrupt__", None):
+                    # next_cycle_input = []
+                    decisions = []
+                    interrupt_list = chunk.get("__interrupt__", [])
+                    for interrupt_info in interrupt_list:
+                        action_requests = interrupt_info.value.get("action_requests", [])
+                        review_configs = interrupt_info.value.get("review_configs", [])
+                        for index, action_item in enumerate(action_requests):
+                            review_item = review_configs[index]
+                            print(f"\n工具 {index} 需要您的审批:{action_item.get("name", "-")},参数:{action_item.get("args", "-")}")
+                            while True:
+                                approval_input = input(f"请输入审批信息,{review_item.get("allowed_decisions", "-")}:").lower()
+                                if approval_input == "approve":
+                                    interrupted = True
+                                    decisions.append({
                                         "type": "approve"
-                                    }
-                                ]
-                            })
-                            # agent.stream(resume_cmd, config=config, version="v2")
-                            break
-                        elif approval_input == 'reject':
-                            interrupted = True
-                            next_input = Command(resume={
-                                "decisions": [
-                                    {
+                                    })
+                                    break
+                                elif approval_input == 'reject':
+                                    interrupted = True
+                                    decisions.append({
                                         "type": "reject",
                                         "message": "大家都不想加班吧！"
-                                    }
-                                ]
-                            })
-                            # agent.stream(resume_cmd, config=config, version="v2")
-                            break
-                        else:
-                            continue
+                                    })
+                                    break
+                                else:
+                                    continue
 
         if interrupted:
+            next_input = Command(resume={
+                "decisions": decisions
+            })
             continue
         else:
+            # 打印分行
+            print("")
+            print("--" * 80)
             break
 
 
