@@ -1,0 +1,56 @@
+[
+  {
+    "run_id": "b4a81a27",
+    "interrupt_id": null,
+    "status": "COMPLETED",
+    "context": {
+      "order_id": "ORD001"
+    },
+    "action": {
+      "name": "process_refund",
+      "args": {
+        "order_id": "ORD001"
+      }
+    },
+    "result": "订单ORD001执行退款完毕，退款金额:200",
+    "decision_message": null,
+    "created_at": "2026-07-26T02:13:42.409909+08:00",
+    "updated_at": "2026-07-26T02:13:42.409909+08:00"
+  },
+  {
+    "run_id": "9bc5a5a8",
+    "interrupt_id": "INT-33f929",
+    "status": "COMPLETED",
+    "context": {
+      "order_id": "ORD002"
+    },
+    "action": {
+      "name": "process_refund",
+      "args": {
+        "order_id": "ORD002"
+      }
+    },
+    "result": "订单ORD002执行退款完毕，退款金额:3000",
+    "decision_message": null,
+    "created_at": "2026-07-26T02:14:06.766171+08:00",
+    "updated_at": "2026-07-26T02:14:06.766171+08:00"
+  },
+  {
+    "run_id": "737580a5",
+    "interrupt_id": "INT-1ebc80",
+    "status": "REJECTED",
+    "context": {
+      "order_id": "ORD003"
+    },
+    "action": {
+      "name": "process_refund",
+      "args": {
+        "order_id": "ORD003"
+      }
+    },
+    "result": "审批拒绝: 不给退啊！",
+    "decision_message": null,
+    "created_at": "2026-07-26T02:38:28.767083+08:00",
+    "updated_at": "2026-07-26T02:38:28.767083+08:00"
+  }
+]
