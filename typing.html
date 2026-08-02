@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<body>
+  <div id="mock-typing"></div>
+  <script>
+      const dom  = document.getElementById("mock-typing")
+      let timer = null
+      function typingFn(full_text, delay=80) {
+          if (timer) {
+              clearInterval(timer)
+              timer = null
+          }
+          index = 0
+          timer = setInterval(() => {
+              dom.innerText += full_text[index]
+              index ++
+              if (index >= full_text.length) {
+                  clearInterval(timer)
+                  timer = null
+                }
+          }, delay)
+      }
+      typingFn("你好，我是AI，正在逐字模拟打字输出。这是一段测试文本");
+  </script>
+</body>
+</html>
