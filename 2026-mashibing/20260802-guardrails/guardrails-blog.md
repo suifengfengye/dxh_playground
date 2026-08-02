@@ -276,7 +276,7 @@ def custom_guardrail(state: AgentState, runtime: Runtime):
 # 4. 更多信息
 
 1. demo地址
--
- 
+- https://github.com/suifengfengye/dxh_playground/tree/main/2026-mashibing/20260802-guardrails
+
 2. langchain文档参考
 - https://docs.langchain.com/oss/python/langchain/guardrails
