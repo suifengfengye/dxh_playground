@@ -1,0 +1,25 @@
+[project]
+name = "ai-trend-api"
+version = "0.1.0"
+description = "Backend API for GitHub AI Trend watchlist MVP"
+requires-python = ">=3.12"
+dependencies = [
+  "alembic>=1.16.4",
+  "apscheduler>=3.10.4",
+  "fastapi>=0.116.1",
+  "httpx>=0.28.1",
+  "pydantic-settings>=2.10.1",
+  "sqlalchemy>=2.0.43",
+  "uvicorn[standard]>=0.35.0",
+]
+
+[dependency-groups]
+dev = [
+  "ruff>=0.12.8",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

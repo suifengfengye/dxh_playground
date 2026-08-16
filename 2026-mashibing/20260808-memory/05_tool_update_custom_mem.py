@@ -85,11 +85,6 @@ async def main():
 
     print(result)
 
-# "user_id": "大小寒_02",
-#             "level": "NORMAL",
-#             "preferences": {
-#                 "hobby": "自媒体、写代码！!"
-#             }
     result = agent.invoke({
         "messages": [
                 {
