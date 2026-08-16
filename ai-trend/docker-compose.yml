@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./data:/app/data
+      - ${SQLITE_DATA_DIR:-/data/ai-trend}:/data/ai-trend
 
   web:
     build:
