@@ -7,8 +7,9 @@ import { addToWatchlist } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import type { Repository } from "@/lib/types";
 
-export function AddRepoForm() {
+export function AddRepoForm({ onSuccess }: { onSuccess?: (repository: Repository) => void }) {
   const [repoUrl, setRepoUrl] = useState("");
   const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -20,6 +21,7 @@ export function AddRepoForm() {
     try {
       const repository = await addToWatchlist(repoUrl);
       setMessage(`已加入 watchlist: ${repository.full_name}`);
+      onSuccess?.(repository);
       setRepoUrl("");
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "添加失败");

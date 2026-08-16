@@ -11,6 +11,9 @@ export function RepoTable({ repositories }: { repositories: Repository[] }) {
         <CardTitle>Watchlist</CardTitle>
       </CardHeader>
       <CardContent>
+        {repositories.length === 0 ? (
+          <p className="text-sm text-mutedForeground">暂时还没有仓库，先添加一个 GitHub 仓库试试。</p>
+        ) : null}
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm">
             <thead>
