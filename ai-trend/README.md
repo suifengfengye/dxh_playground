@@ -47,3 +47,21 @@ npm run dev
 2. 加 `POST /repos/{id}/collect` 手动采集接口
 3. 补 7d / 30d 增长与 breakout score
 4. 补 Alembic 迁移与前端删除功能
+
+# docker-compose 启动
+
+```shell
+# 1. 
+docker compose up -d --build --remove-orphans
+# 2. 查看状态
+docker compose ps
+# 3. 停止
+docker compose down -d --build --remove-orphans
+```
+
+```shell
+# 1. 停止容器
+docker stop app-ai-compoiso-backend-1 app-ai-compoiso-frontend-1
+# 2. 删除容器
+docker rm app-ai-compoiso-backend-1 app-ai-compoiso-frontend-1
+```
