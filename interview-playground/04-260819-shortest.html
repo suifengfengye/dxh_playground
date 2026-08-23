@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+1092. 最短公共超序列
+给你两个字符串 str1 和 str2，返回同时以 str1 和 str2 作为 子序列 的最短字符串。如果答案不止一个，则可以返回满足条件的 任意一个 答案。
+
+如果从字符串 t 中删除一些字符（也可能不删除），可以得到字符串 s ，那么 s 就是 t 的一个子序列。
+
+ 
+
+示例 1：
+
+输入：str1 = "abac", str2 = "cab"
+输出："cabac"
+解释：
+str1 = "abac" 是 "cabac" 的一个子串，因为我们可以删去 "cabac" 的第一个 "c"得到 "abac"。 
+str2 = "cab" 是 "cabac" 的一个子串，因为我们可以删去 "cabac" 末尾的 "ac" 得到 "cab"。
+最终我们给出的答案是满足上述属性的最短字符串。
+示例 2：
+
+输入：str1 = "aaaaaaaa", str2 = "aaaaaaaa"
+输出："aaaaaaaa"
+ */
+function shortestCommonSupersequence(str1, str2) {
+    let maxMatch = ""
+    debugger
+    for (let i = 0, len = str1.length; i < len; i++) {
+        let tmp = str1[i]
+        let foundCount = 0
+        let matchStr = ""
+        for (let j = 0, jLen = str2.length; j < jLen; j++) {
+            let jTmp = str2[j]
+            if (!foundCount && tmp === jTmp) {
+                matchStr += jTmp
+                foundCount = 1
+            } else if (foundCount && str1[i+ foundCount] === jTmp) {
+                matchStr += jTmp
+                foundCount ++
+            } else if (foundCount && str1[i + foundCount] !== jTmp) {
+                break
+            }
+        }
+        if (matchStr.length > maxMatch.length) {
+            maxMatch = matchStr
+        }
+    }
+    console.log(maxMatch)
+    if (!maxMatch) {
+        return ""
+    }
+
+    const index = str1.indexOf(maxMatch)
+    if (index === 0) {
+        return str2 + str1.replace(maxMatch, "")
+    }
+    return str1.replace(maxMatch, "") + str2
+};
+
+    let str1 = "bbbaaaba", str2 = "bbababbb"
+    console.log(shortestCommonSupersequence(str1, str2))
+
+    </script>
+</body>
+</html>
