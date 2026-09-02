@@ -56,4 +56,25 @@ SummarizationMiddleware(
 举例：通过自定义策略，使用 @after_model 实现一个 SummarizationMiddleware。
 
 
-# 2. 
+# 2. 长期记忆
+
+## 2.1 初识InMemoryStore
+
+1. namespace 命令空间
+
+长期记忆，使用命名空间组织。
+
+```python
+namespace = ("user_id", "preferences")
+```
+
+2. InMemoryStore实例方法
+
+- put(namespace, key, value): value必须是dict。
+- get(namespace, key):
+- search(namespace):
+
+## 2.2 在工具中读取记忆/写入记忆
+
+./06_memory_in_tool.py
+
