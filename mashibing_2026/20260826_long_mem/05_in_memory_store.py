@@ -9,6 +9,7 @@ namespace = ("user_123", "preferences")
 store.put(namespace, "fruit", { "like": ["orange", "banana"], "dislike": ["apple"] })
 store.put(namespace, "sport", { "like": ["basketball", "football"], "dislike": ["pingpong"] })
 store.put(namespace, "color", { "like": ["red", "yellow"], "dislike": ["绿色"] })
+store.put(namespace, "color", { "like": ["red", "green"], "dislike": ["绿色"] })
 
 # 2. 获取数据
 

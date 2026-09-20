@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>申请工作台 · v1 低保真草图评审</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #202020; background: #eee; font: 15px/1.6 system-ui, sans-serif; }
+    a { color: inherit; text-underline-offset: 3px; }
+    .index { padding: 28px max(20px, calc((100% - 1200px)/2)); background: white; border-bottom: 2px solid #333; }
+    h1 { margin: 0 0 10px; font-size: 26px; }
+    h2 { margin: 0 0 8px; font-size: 22px; }
+    h3 { margin: 0 0 10px; font-size: 18px; }
+    h4 { margin: 0 0 6px; font-size: 15px; }
+    p { margin: 8px 0; }
+    .index nav { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px; }
+    main { max-width: 1240px; margin: auto; padding: 26px 20px 70px; }
+    .sheet { margin-bottom: 48px; scroll-margin-top: 20px; }
+    .intro { margin-bottom: 14px; }
+    .intro p { max-width: 950px; }
+    .frame { background: white; border: 2px solid #333; }
+    .bar { border-bottom: 1px solid #333; padding: 12px 20px; display: flex; justify-content: space-between; gap: 16px; }
+    .layout { display: grid; grid-template-columns: 165px minmax(0, 1fr); min-height: 420px; }
+    .sidebar { padding: 24px 15px; border-right: 1px solid #777; background: #f7f7f7; }
+    .sidebar p { margin: 0 0 18px; }
+    .active { border-left: 3px solid #222; padding-left: 8px; font-weight: bold; }
+    .content { padding: 26px; min-width: 0; }
+    .cols { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(220px, 1fr); gap: 22px; }
+    .equal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .box { border: 1px solid #777; padding: 18px; margin: 14px 0; min-width: 0; }
+    .dashed { border-style: dashed; }
+    .muted { color: #555; font-size: 13px; }
+    .field { border: 1px solid #777; min-height: 42px; padding: 8px 12px; margin: 5px 0 16px; background: #fafafa; overflow-wrap: anywhere; }
+    .large { min-height: 95px; }
+    .btn { display: inline-block; border: 1px solid #222; padding: 7px 13px; margin: 4px 5px 4px 0; background: white; }
+    .primary { background: #ddd; border: 2px solid #222; font-weight: 650; }
+    .unavailable { color: #777; border-style: dashed; }
+    .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 9px 20px; border-bottom: 1px solid #999; padding: 12px 0; margin-bottom: 18px; }
+    .selected { font-weight: bold; border-bottom: 3px solid #333; }
+    .tag { display: inline-block; padding: 1px 8px; border: 1px solid #888; font-size: 12px; white-space: nowrap; }
+    .note { border-left: 3px solid #888; padding: 6px 12px; margin-top: 12px; font-size: 14px; }
+    .notice { border: 1px dashed #555; padding: 12px; margin: 14px 0; background: #fafafa; }
+    .foot { margin-top: 22px; border-top: 1px solid #aaa; padding-top: 14px; }
+    .table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .table th, .table td { text-align: left; border-bottom: 1px solid #bbb; padding: 12px 8px; vertical-align: top; }
+    .table th { background: #eee; }
+    .document { border: 1px solid #444; padding: 28px; min-height: 365px; }
+    .document h3 { border-bottom: 1px solid #aaa; padding-bottom: 8px; }
+    .edit { outline: 1px dashed #777; padding: 10px; margin: 12px 0; }
+    .mini { padding: 18px; background: #fff; border: 1px solid #777; }
+    .states { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .phone { max-width: 375px; border: 2px solid #333; background: white; margin: auto; }
+    .phone .content { padding: 18px; }
+    .phone .bar { padding: 12px; }
+    ul { padding-left: 22px; }
+    .index-label { font-size: 12px; letter-spacing: 1px; }
+    @media (max-width: 800px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { border-right: 0; border-bottom: 1px solid #777; display: flex; gap: 20px; padding: 12px; flex-wrap: wrap; }
+      .sidebar p { margin: 0; }
+      .cols, .states { grid-template-columns: 1fr; }
+      .content { padding: 18px; }
+      .table { font-size: 12px; }
+      .table th, .table td { padding: 10px 5px; overflow-wrap: anywhere; }
+      main { padding: 20px 10px; }
+      .bar { flex-wrap: wrap; }
+    }
+    @media print {
+      body { background: white; font-size: 11px; }
+      .index nav { display: none; }
+      main { padding: 0; }
+      .sheet { break-before: page; margin: 0; }
+      .frame, .mini { break-inside: avoid; }
+      .content { padding: 18px; }
+      .index { padding: 20px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="index">
+    <div class="index-label">PRODUCT-20260919-V1 / LOW-FIDELITY / 待确认</div>
+    <h1>申请工作台：页面草图评审</h1>
+    <p>美国英语用户 · 浏览器 Web · 用户导入职位 · 云端处理</p>
+    <p><strong>只审查流程、布局和信息优先级，不审查配色、字体、圆角或视觉品牌。</strong></p>
+    <p><strong>本轮范围：</strong>全部页面已按「AI 先给结论、用户只做确认」的同一思路重做。P01/P02/P08 为对话 + 事实清单，依据见 05-intake-requirements.md；P03–P07、P09 的改动见对应页面注脚与 03-page-architecture.md 第 5 节。W02A/W02B/W02C 已合并为 W02。</p>
+    <p><strong>本轮新增且未验证：</strong>M12 职位内追问（已确认纳入）、S11–S12 降级形态。两者都是能力承诺，验收见 02-mvp-scope.md 的 A14 / A15。</p>
+    <p class="muted">页面内容为英文产品文案示意；中文为评审注释。所有人物、公司、岗位、状态和数字均为虚构示例。矩形控件不执行业务，仅上方目录可跳转。这不是产品实现或可用性已验证原型。</p>
+    <nav aria-label="草图目录">
+      <a href="#p01">P01 登录</a><a href="#p02">P02 建立资料（对话+清单）</a>
+      <a href="#p03">P03 工作台</a><a href="#p04">P04 导入职位</a><a href="#p05">P05 适配详情</a>
+      <a href="#p05-tabs">P05 页内标签</a><a href="#p06">P06 文档编辑</a><a href="#p06-deep">P06 版本与审阅</a><a href="#p07">P07 检查导出</a>
+      <a href="#p07-letter">P07 求职信变体</a><a href="#p08">P08 主资料</a><a href="#p09">P09 设置</a><a href="#dialogs">对话框</a>
+      <a href="#states">异常与空态</a><a href="#ai-fallback">AI 降级</a><a href="#mobile">手机草图</a>
+    </nav>
+  </header>
+  <main>
+    <section class="sheet" id="p01">
+      <div class="intro"><h2>P01 / W01 · 欢迎与登录</h2><p>首次访问者只需判断两件事：这跟直接开个通用聊天窗口有什么不同；要投入多少时间。首版不做长营销站，欢迎与登录共用一页。</p></div>
+      <div class="frame" lang="en">
+        <div class="bar"><strong>Job Application Workspace [working title]</strong><span>Help</span></div>
+        <div class="content cols equal">
+          <div><h2>Bring a job posting.<br>See how your experience<br>lines up with it.</h2>
+            <p>Then get a resume built from your real experience — and see exactly what the assistant changed.</p>
+            <div class="box"><strong>What the assistant does</strong><br>Reads your resume and turns it into facts you confirm<br>Reads the posting and maps it to those facts<br>Drafts and rewrites, showing its reasons</div>
+            <div class="box dashed"><strong>What it never does</strong><br>Invent experience, numbers, or skills you don't have<br>Search for jobs or submit applications for you</div>
+            <p class="muted">No installation. No AI account or API key.</p>
+          </div>
+          <div class="box"><h3>Start your workspace</h3><p>Already have an account? Use the same email.</p>
+            <div>Email address</div><div class="field">you@example.com</div>
+            <span class="btn primary">Send sign-in link</span>
+            <p class="muted">By continuing, you agree to Terms and acknowledge the Privacy notice.</p>
+            <div class="notice">Your resume is processed in the cloud.<br>Read how your data is used and deleted.</div>
+          </div>
+        </div>
+      </div>
+      <div class="note">删掉原「1. 加简历 2. 复核 3. 下载」步骤条：那三个数字会把用户预期引导成"要按顺序填三步表单"，正是这次要消除的印象。改为「会做什么 / 绝不做什么」对照，把边界一次说清。点击后页内显示 Check your email、Change email、Resend link；过期链接回到同页重发，不新增“注册/登录/忘记密码”三套流程。条款与隐私文案需另行审查。</div>
+    </section>
+
+    <section class="sheet" id="p02">
+      <div class="intro"><h2>P02 / W02 · Build your profile：对话 + 事实清单（取代原 W02A/B/C 三步表单）</h2><p>对话只负责"输入与追问"；右栏清单才是数据源，回答"到底还缺什么"。任何一条事实都能点开精确修改，所以结构化校对能力没有丢。硬必需只有两项：姓名、邮箱。</p></div>
+      <div class="frame" lang="en">
+        <div class="bar"><strong>Build your profile</strong><span>Saved · Finish later</span></div>
+        <div class="content cols">
+          <div>
+            <div class="box dashed"><h3>Assistant</h3><p>Let's build your profile. Upload your resume, paste the text, or just tell me about your most recent job.</p><span class="btn">Attach a file</span><span class="btn">Paste resume text</span><span class="btn">Just type it</span></div>
+            <div class="row"><span class="tag">resume.docx attached</span><span class="muted">Reading your resume…</span></div>
+            <div class="box"><h3>Assistant</h3><p>I read it. Here's what I found — confirm, fix, or remove anything. Nothing is used until you confirm it.</p>
+              <div class="box"><div class="row"><strong>Contact</strong><span class="tag">Needs confirmation</span></div><p>Alex Morgan · alex@example.com · Austin, TX</p><span class="btn primary">Looks right</span><span class="btn">Edit</span></div>
+              <div class="box"><div class="row"><strong>Experience · Operations Specialist</strong><span class="tag">Needs confirmation</span></div><p>Northstar Co. · Jan 2022 – Present</p><p class="muted">"Coordinated onboarding projects across sales and customer support."</p><span class="btn primary">Looks right</span><span class="btn">Edit</span><span class="btn">Remove</span></div>
+              <div class="box"><div class="row"><strong>Education</strong><span class="tag">Missing a detail</span></div><p>I found a degree with no field of study. Optional — add it or skip.</p><span class="btn">Add detail</span><span class="btn">Skip</span></div>
+            </div>
+            <div class="box dashed"><h3>Assistant</h3><p>Two things most people add, both optional. Or go straight to your workspace.</p><span class="btn">Skills</span><span class="btn">A second role</span><span class="btn">Nothing else for now</span></div>
+            <div class="field">Tell me anything I missed, or ask a question…</div>
+            <p class="muted">Composer: attach · paste · type. Follow-ups arrive as chips, not as a new form.</p>
+          </div>
+          <aside>
+            <div class="box"><h3>What's in your profile</h3>
+              <p><strong>Required to start</strong></p>
+              <p>[x] Contact — confirmed<br>[x] One experience — confirmed</p>
+              <p><strong>Waiting on you · 1</strong></p>
+              <p>[ ] Education — needs a field of study</p>
+              <p><strong>Optional</strong></p>
+              <p>[ ] Skills<br>[ ] A second role<br>[ ] Projects</p>
+              <p><strong>Asked later, only when a job needs it</strong></p>
+              <p>[ ] Work authorization<br>[ ] Target roles / locations<br>[ ] Salary preference</p>
+              <span class="btn primary">Start with what I have</span>
+            </div>
+            <div class="notice"><strong>Only contact and one role are required.</strong><p>Everything else can wait. Preferences are never asked here — a posting asks when it actually matters.</p></div>
+          </aside>
+        </div>
+      </div>
+      <div class="states" lang="en">
+        <div class="mini">
+          <h3>Editing a fact in place</h3>
+          <p class="muted">"Edit" expands the same card. No new page, no long form.</p>
+          <div>Company</div><div class="field">Northstar Co.</div>
+          <div>Job title</div><div class="field">Operations Specialist</div>
+          <div>Dates</div><div class="field">Jan 2022 – Present</div>
+          <div>What you did — your own words are fine</div><div class="field large">Coordinated onboarding projects across sales and customer support.</div>
+          <span class="btn primary">Save</span><span class="btn">Cancel</span>
+          <p class="muted">Every field keeps a visible label. Your text and assistant text are stored separately, so a later AI rewrite never overwrites what you typed.</p>
+        </div>
+        <div class="mini">
+          <h3>Cold start — no resume file</h3>
+          <div class="box dashed"><p>What was your most recent job?</p></div>
+          <div class="field">I ran client onboarding at a logistics company.</div>
+          <div class="box"><p>Got it. I'll record:</p><p><strong>Client Onboarding</strong> · logistics company · dates unknown</p><span class="btn primary">Looks right</span><span class="btn">Edit</span></div>
+          <div class="box dashed"><p>What company was it, and roughly when did it start?</p></div>
+          <p class="muted">One question at a time, and the answer can be a whole paragraph. The assistant extracts facts from free text instead of forcing field-by-field entry.</p>
+        </div>
+      </div>
+      <div class="note">Skip / Finish later 常驻，不强制线性引导。对话里每张事实卡在被确认前只是"提取结果"，不是已核实事实。右栏不用百分比，只列具名 section，避免把"档案完成度"变成焦虑来源。工作授权、地点、薪资一律不在此页提问，等具体职位命中时再就地追问。窄屏时右栏折叠为清单抽屉并显示待处理数量。</div>
+    </section>
+
+    <section class="sheet" id="p03">
+      <div class="intro"><h2>P03 / W03 · Applications 工作台</h2><p>默认首页，同时承担跟踪。首屏由 AI 直接回答"今天需要你做什么"，用户不必自己从状态列推断；结构仍是列表，不用可拖拽看板。</p></div>
+      <div class="frame" lang="en">
+        <div class="bar"><strong>Job Application Workspace</strong><span>Alex · Account</span></div>
+        <div class="layout"><aside class="sidebar"><p class="active">Applications</p><p>My profile</p><p>Settings</p></aside>
+          <div class="content"><div class="row"><div><h2>Applications</h2><p>Pick up where you left off.</p></div><span class="btn primary">+ Add a job</span></div>
+            <div class="box dashed"><h3>Assistant · what needs you today</h3>
+              <p>Project Coordinator at Example Works closes Sep 25 and the resume is ready. Download and submit whenever you want.</p>
+              <p>Operations Manager fit is done. One requirement has no evidence — managing a team. Decide whether to add a fact or accept the gap.</p>
+              <p class="muted">Read from the 4 applications below and the postings you imported. I don't suggest jobs you haven't added.</p>
+              <span class="btn">Open Project Coordinator</span><span class="btn">Review Operations Manager fit</span>
+            </div>
+            <div class="notice">Northstar Co. · Resume review in progress. You can leave this page. [View progress]</div>
+            <div class="row"><div class="field">Search your applications</div><div class="field">Status: All · Sort: Last updated</div></div>
+            <p class="muted">All · Saved · Drafting · Ready · Applied · Interview · Offer · Closed</p>
+            <table class="table"><thead><tr><th scope="col">Role / company</th><th scope="col">Status</th><th scope="col">Updated / deadline</th><th scope="col">Assistant read</th><th scope="col">Next step</th></tr></thead><tbody>
+              <tr><td>Operations Manager<br>Northstar Co.</td><td>Drafting</td><td>Today<br>Deadline not stated</td><td>6 of 9 requirements have evidence<br><span class="muted">1 needs your decision</span></td><td>View progress</td></tr>
+              <tr><td>Project Coordinator<br>Example Works</td><td>Ready</td><td>Sep 18<br>Closes Sep 25</td><td>Draft checked, nothing flagged<br><span class="muted">Closes in 6 days</span></td><td>Download</td></tr>
+              <tr><td>Customer Success Lead<br>Sample Studio</td><td>Applied</td><td>Sep 16<br>Applied Sep 15</td><td>Submitted Sep 15<br><span class="muted">No new information</span></td><td>Update status</td></tr>
+              <tr><td>Program Specialist<br>Demo Group</td><td>Saved</td><td>Sep 14<br>Deadline not stated</td><td>Not analyzed yet<br><span class="muted">Run the fit to see where you stand</span></td><td>View fit</td></tr>
+            </tbody></table><div class="foot row"><span>4 applications · Example data</span><span>Previous / Next</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="note">Assistant 建议条只基于用户已导入的职位与当前状态生成，不推荐用户没添加过的岗位，避免变成"投递推荐机器人"。行内 "Assistant read" 用一句话给结论（几条要求有证据、有无待决定项），取代让用户自己解读状态。行标题进入 P05；Download 进入 P07；Update status 打开 D01。列表无匹配时提供 Clear filters，不混淆为“还没有申请”。分页只在记录较多时出现。</div>
+    </section>
+
+    <section class="sheet" id="p04">
+      <div class="intro"><h2>P04 / W04 · 导入职位：AI 先读，再给结论</h2><p>图中是 URL 已解析后的状态。导入后 AI 先把"读到了什么、哪里没读到"摆在前面，用户只做修正，不从空白字段开始填。分析成功进入 P05；失败仍保留已保存的职位。</p></div>
+      <div class="frame" lang="en">
+        <div class="bar"><strong>Applications / Add a job</strong><span>Cancel</span></div>
+        <div class="content"><h2>Bring a job you want to apply for</h2><p>Paste a public posting link, or paste the full job description.</p>
+          <div class="cols equal">
+            <div><div class="tabs"><span class="selected">Job URL</span><span>Paste description</span></div><div>Job posting URL</div><div class="field">https://careers.example.com/jobs/ops-manager</div><span class="btn">Import job</span>
+              <div class="notice">Some job sites block imports. You can always paste the description. We won't sign in to a job site for you.</div>
+              <div class="box dashed"><h3>Paste description alternative</h3><div class="field large">Paste the full responsibilities and requirements...</div><p>Source URL (optional). I'll pull the company and title out of the text.</p></div>
+            </div>
+            <div class="box"><h3>Assistant · what I read</h3>
+              <p class="muted">Read from careers.example.com on Sep 19, 2026 · every line below is editable</p>
+              <div class="row"><span class="tag">Title</span><strong>Operations Manager</strong></div>
+              <div class="row"><span class="tag">Company</span><strong>Northstar Co.</strong></div>
+              <div class="row"><span class="tag">Location</span><strong>Austin, TX · Hybrid · Full-time</strong></div>
+              <p>I found 9 requirements across the responsibilities and qualifications.</p>
+              <hr>
+              <p><strong>Not stated in the posting</strong></p>
+              <p>Deadline · Salary · Visa sponsorship · Team size</p>
+              <p class="muted">I left these blank instead of guessing. Add them only if you actually know them.</p>
+              <div class="field large">Full posting text, saved as a snapshot<br>Responsibilities: coordinate cross-functional operations...<br>Requirements: 3+ years of project coordination...</div>
+              <p class="muted">Source domain: careers.example.com · A real domain is not a guarantee that a posting is genuine.</p>
+              <span class="btn">Edit text</span><span class="btn primary">Save &amp; analyze</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="note">公司名与职位名不再以空白必填字段出现，改为 AI 读出后可编辑的一行——用户做的是"改错"，不是"填写"。原文里没有的字段（截止日期、薪资、签证赞助、团队规模）统一标为 Not stated，不猜测。重复职位提示 Open existing / Create separate application；受限来源引导粘贴正文，不自动换职位或编造正文。</div>
+    </section>
+
+    <section class="sheet" id="p05">
+      <div class="intro"><h2>P05 / W05 · 职位详情：AI 先给结论与下一步</h2><p>首屏是 AI 的结论和"我建议你接下来做什么"，然后才是逐条要求对照。不用百分比分数掩盖证据不足。</p></div>
+      <div class="frame" lang="en">
+        <div class="bar"><strong>&lt; Applications / Northstar Co.</strong><span>Saved · Update status · More</span></div>
+        <div class="content"><div class="row"><div><h2>Operations Manager</h2><p>Northstar Co. · Austin, TX · Hybrid</p><p class="muted">Imported Sep 19 · Deadline not stated · [Original posting]</p></div><span class="btn primary">Tailor resume</span></div>
+          <div class="tabs"><span class="selected">Fit</span><span>Job posting</span><span>Activity</span></div>
+          <div class="cols"><div>
+            <div class="box dashed"><h3>Assistant · my read</h3><p>Your cross-functional coordination work covers the core of this role. One requirement has no evidence: managing a team of five. Everything else is either supported by your profile or not stated in the posting.</p><p><strong>What I'd do next:</strong> if you have led anyone — even contractors or interns — add it as a fact and I'll re-check. If not, keep it as a gap. It is one line, not a blocker.</p><p class="muted">Based on this posting and Profile v3. This is not a prediction of interview success and not a hiring decision.</p><span class="btn">Add a fact</span><span class="btn">Keep as a gap</span></div>
+            <table class="table"><thead><tr><th scope="col">Job requirement</th><th scope="col">Your evidence / action</th></tr></thead><tbody>
+              <tr><td>Cross-functional projects</td><td><span class="tag">Supported</span><br>Northstar experience, bullet 2 [View source]</td></tr>
+              <tr><td>Manage a team of 5</td><td><span class="tag">Gap</span><br>No direct management evidence [Add a fact]</td></tr>
+              <tr><td>US work authorization</td><td><span class="tag">Needs confirmation</span><br>Your preference is not provided [Review]</td></tr>
+            </tbody></table>
+          </div><aside>
+            <div class="box"><h3>Ask about this job</h3><p class="muted">Answers use only this posting and your profile. Not a general chat.</p><div class="field">Does this posting require sponsorship?</div><p>"No — it says you must be authorized to work in the US, and sponsorship is not mentioned anywhere." <span class="muted">[Show the line]</span></p><span class="btn">Ask something else</span></div>
+            <div class="box"><h3>What I could not determine</h3><p>Visa sponsorship: not stated in the posting</p><p>Company culture: not researched — I only read this posting</p><p>Work arrangement: hybrid, matches what you told me</p><span class="btn">View exact requirements</span></div>
+            <div class="box"><h3>Your decision</h3><p>Create a draft, keep this for later, or record an application you made elsewhere.</p><span class="btn">Keep saved</span><span class="btn">Mark as applied</span></div>
+          </aside></div>
+        </div>
+      </div>
+      <div class="note">Ask about this job 只在当前职位范围内回答并引用原文行；答不出来就直说不知道，不用通用职业建议填空，也不是聊天入口。Tailor resume 后展示材料选项与额度消耗确认，求职信默认不选。主资料有变化时提示结果已过时，用户主动重分析，不自动重写草稿。</div>
+    </section>
+
+    <section class="sheet" id="p05-tabs">
+      <div class="intro"><h2>P05 / W05-2 · 页内标签：Job posting 与 Activity</h2><p>三个标签在同一详情页内切换，不新开独立页面。原文是事实源；活动流回答"我做过什么、什么时候"。</p></div>
+      <div class="states" lang="en">
+        <div class="mini">
+          <div class="tabs"><span>Fit</span><span class="selected">Job posting</span><span>Activity</span></div>
+          <h3>Job posting</h3>
+          <p class="muted">careers.example.com · Imported Sep 19, 2026 · Saved snapshot</p>
+          <div class="field large">Operations Manager<br>Northstar Co. · Austin, TX · Hybrid<br><br>Responsibilities<br>- Coordinate cross-functional operations...<br>Requirements<br>- 3+ years of project coordination...</div>
+          <span class="btn">Edit text</span><span class="btn">Re-import from URL</span><span class="btn">Copy text</span>
+          <p class="muted">Edits create a new snapshot and mark the previous analysis as out of date. This text is what every fit check and every draft is measured against.</p>
+        </div>
+        <div class="mini">
+          <div class="tabs"><span>Fit</span><span>Job posting</span><span class="selected">Activity</span></div>
+          <h3>Activity</h3>
+          <table class="table">
+            <thead><tr><th scope="col">When</th><th scope="col">Event</th></tr></thead>
+            <tbody>
+              <tr><td>Sep 19, 2026</td><td>Job imported from URL <span class="muted">· You</span></td></tr>
+              <tr><td>Sep 19, 2026</td><td>Fit analysis completed <span class="muted">· System</span></td></tr>
+              <tr><td>Sep 19, 2026</td><td>Resume draft v1 created <span class="muted">· You</span></td></tr>
+              <tr><td>Sep 20, 2026</td><td>Status: Saved → Drafting <span class="muted">· You · note added</span></td></tr>
+              <tr><td>—</td><td>No application submitted yet <span class="muted">· —</span></td></tr>
+            </tbody>
+          </table>
+          <p class="muted">Events are appended, never overwritten. Corrections appear as new events. This is a record of your actions, not a message inbox.</p>
+        </div>
+      </div>
+      <div class="note">Activity 只记录真实发生的事件（导入、分析、生成、编辑、状态变更、导出、投递确认），不生成"AI 正在思考"之类的假进度流。无事件时显示 Nothing yet，不补默认条目。Job posting 的长文本要有自己的滚动边界，不能把整页撑长。</div>
+    </section>
+
+    <section class="sheet" id="p06">
+      <div class="intro"><h2>P06 / W06 · 材料编辑：AI 提议，你保留否决权</h2><p>文档是主内容，AI 的动作与理由在旁边。选中一段即可改写；每次改动都进改动日志，可逐条回退。不做开放式聊天和任意版式拖拽。</p></div>
+      <div class="frame" lang="en">
+        <div class="bar"><strong>&lt; Job details / Documents</strong><span>Northstar Co. · Drafting · v2 · Saved</span></div>
+        <div class="content"><div class="row"><div class="tabs"><span class="selected">Resume</span><span>+ Add cover letter</span></div><span class="btn primary">Review &amp; export</span></div>
+          <div class="row"><span>Format: Single column · US Letter · [1 page / 2 pages]</span><span>Version history</span></div>
+          <div class="cols">
+            <div class="document"><h2>ALEX MORGAN</h2><p>Austin, TX · alex@example.com</p><h3>Summary</h3><div class="edit">Operations professional with experience coordinating cross-functional onboarding projects.<br><span class="muted">[Edit section] [View changes]</span></div><h3>Experience</h3><strong>Operations Specialist · Northstar Co.</strong><p>Jan 2022 - Present</p><div class="edit">Coordinated onboarding projects across sales and customer support.<br><span class="muted">Selected paragraph · [Edit]</span></div><h3>Education / Skills</h3><p>[Expand section to edit]</p></div>
+            <aside>
+              <div class="box"><h3>Rewrite this paragraph</h3><p class="muted">Applies to the paragraph you selected.</p><span class="btn">Make it shorter</span><span class="btn">Match this requirement</span><span class="btn">Plain language</span><span class="btn">I'll write it</span></div>
+              <div class="box"><h3>Why I changed this</h3><p><span class="tag">From your profile</span> Experience / Northstar / bullet 2</p><p>Original: "Coordinated onboarding projects..."</p><p>Change: moved this line up, because the posting names cross-functional coordination first.</p><span class="btn">Keep change</span><span class="btn">Restore original</span></div>
+              <div class="notice"><strong>1 item needs your review</strong><p>Direct people management is not supported by your profile. I have not added it.</p><span class="btn">Add supporting fact</span><span class="btn">Keep as a gap</span></div>
+              <div class="box"><h3>Change log · v2</h3><p>Summary reworded to lead with operations work<br>Bullet 2 moved up under Experience<br>Removed "detail-oriented" — no evidence in your profile</p><span class="btn">Review all changes</span></div>
+              <div class="box"><h3>Review status</h3><p>Draft complete<br>Automated review complete<br>Your review: pending</p><p class="muted">Automated checks can miss mistakes. Review dates, names, skills, and achievements.</p></div>
+            </aside>
+          </div>
+          <div class="foot">[ ] I have reviewed this version for accuracy. <span class="muted">Changes after review require another check.</span></div>
+        </div>
+      </div>
+      <div class="note">AI 只提议、不直接落稿：每次改写都要用户接受或回退，并写入改动日志；用户手写内容与 AI 文本分开存储，AI 重写不覆盖用户文本。有未处理事实项时主动作解释阻塞原因。补充事实打开 D03；重新生成另存版本，不覆盖手改。Cover letter 使用相同编辑结构，独立生成/失败不阻断 Resume。</div>
+    </section>
+
+    <section class="sheet" id="p06-deep">
+      <div class="intro"><h2>P06 / W06-2 · 版本历史、求职信编辑与审阅阻塞</h2><p>已提交版本永不被覆盖；求职信与简历独立生成、独立失败；审阅状态必须暴露真实阻塞原因，不能给出虚假的"已核实"。</p></div>
+      <div class="states" lang="en">
+        <div class="mini">
+          <h3>Version history</h3>
+          <table class="table">
+            <thead><tr><th scope="col">Version</th><th scope="col">Saved</th><th scope="col">What changed</th></tr></thead>
+            <tbody>
+              <tr><td>v2 <span class="tag">Current</span></td><td>Sep 20, 2026</td><td>Summary reworded; you edited one bullet</td></tr>
+              <tr><td>v1</td><td>Sep 19, 2026</td><td>First draft, generated from Profile v3</td></tr>
+            </tbody>
+          </table>
+          <span class="btn">View v1</span><span class="btn">Restore as new version</span>
+          <p class="muted">A submitted version is locked. Restoring copies forward into a new version; it never overwrites what an employer already received.</p>
+        </div>
+        <div class="mini">
+          <div class="tabs"><span>Resume</span><span class="selected">Cover letter</span></div>
+          <div class="document">
+            <h3>Dear Hiring Manager,</h3>
+            <p>I am applying for the Operations Manager role at Northstar Co.</p>
+            <div class="edit">In my current role I coordinated onboarding projects across sales and customer support.<br><span class="muted">Selected paragraph · [Edit] [View changes]</span></div>
+            <p class="muted">Cover letter v1 · 1 page · US Letter</p>
+          </div>
+          <p class="muted">The letter is generated from the same confirmed profile but keeps its own version, checks, and failure state. A failed letter leaves the resume untouched.</p>
+        </div>
+        <div class="mini">
+          <h3>Review blocked</h3>
+          <div class="notice"><strong>1 unresolved item</strong><p>The draft claims direct people management, which your profile does not support.</p><span class="btn">Add supporting fact</span><span class="btn">Remove the claim</span></div>
+          <span class="btn primary unavailable">Review &amp; export</span>
+          <p class="muted">The main action stays unavailable until every flagged claim is resolved. We never mark a draft "verified" while a fact is open.</p>
+        </div>
+      </div>
+      <div class="note">版本历史对 Resume 与 Cover letter 分开呈现，避免一个时间线混淆两种产物。恢复历史版本属于用户主动动作，需再次确认，且不改变已提交状态。保存失败时保留前台文本并提供复制出口，不阻断用户带走内容。</div>
+    </section>
+
+    <section class="sheet" id="p07">
+      <div class="intro"><h2>P07 / W07 · 检查、下载、自行投递</h2><p>先确认当前版本与质量检查，再导出；明确标注 Not submitted。检查失败由 AI 说明原因并给最小修复动作，投递确认是独立的后续动作。</p></div>
+      <div class="frame" lang="en">
+        <div class="bar"><strong>&lt; Documents / Review &amp; export</strong><span>Northstar Co. · Ready · Not submitted</span></div>
+        <div class="content cols">
+          <div><h2>Your resume is ready to download</h2><div class="document"><h3>Resume v2 · 1 page · US Letter</h3><p>ALEX MORGAN</p><hr><p>Summary</p><p>Operations professional with experience...</p><hr><p>Experience</p><p>Operations Specialist · Jan 2022 - Present</p><p class="muted">PDF page preview region · Text-only sketch</p></div><span class="btn">Back to editing</span></div>
+          <aside>
+            <div class="box"><h3>Checks for v2</h3><p>[Pass] Required contact text present<br>[Pass] PDF text is extractable<br>[Pass] No detected page overflow<br>[Reviewed] Facts confirmed by you</p><p class="muted">These checks do not guarantee an ATS result or interview.</p></div>
+            <div class="box"><h3>Download</h3><div class="field">Resume format: PDF / DOCX</div><span class="btn primary">Download resume</span><p>Cover letter: not generated [Add in editor]</p><p class="muted">DOCX pagination may vary by editor.</p></div>
+            <div class="box dashed"><h3>Next: submit it yourself</h3><p>Upload your file on the employer's site.</p><span class="btn">Open original posting</span><hr><p>Already submitted?</p><span class="btn">Mark as applied</span></div>
+          </aside>
+        </div>
+      </div>
+      <div class="note">选择下载格式不触发生成新的文本内容。PDF 检查失败显示失败详情，不显示 Ready；已验证 DOCX 可作为降级下载但需明确 PDF 尚未通过。生成过信时增加独立 PDF 下载/Copy text 行。任何下载都不改变投递状态。</div>
+    </section>
+
+    <section class="sheet" id="p07-letter">
+      <div class="intro"><h2>P07 / W07-2 · 已生成求职信时的导出</h2><p>求职信与简历是两份独立产物：各自有版本、检查结果与失败状态。生成过信才出现下载入口，不做空占位。</p></div>
+      <div class="states" lang="en">
+        <div class="mini">
+          <h3>Download</h3>
+          <div class="row"><span>Resume v2 · 1 page</span><span><span class="tag">PDF</span> <span class="tag">DOCX</span></span></div>
+          <span class="btn primary">Download resume</span>
+          <hr>
+          <div class="row"><span>Cover letter v1 · 1 page</span><span><span class="tag">PDF</span></span></div>
+          <span class="btn primary">Download cover letter</span><span class="btn">Copy text</span>
+          <p class="muted">Two files, two independent versions. Downloading one never changes the other, and neither download affects your application status.</p>
+        </div>
+        <div class="mini">
+          <h3>Checks</h3>
+          <p><strong>Resume v2</strong></p>
+          <p>[Pass] Required contact text present<br>[Pass] PDF text is extractable<br>[Pass] No detected page overflow</p>
+          <p><strong>Cover letter v1</strong></p>
+          <p>[Pass] Exactly 1 page<br>[Pass] PDF text is extractable<br>[Reviewed] Facts confirmed by you</p>
+          <p class="muted">If the letter fails a check, only the letter is held back; the resume stays downloadable. Neither result predicts an ATS outcome or an interview.</p>
+        </div>
+        <div class="mini">
+          <h3>When a check fails</h3>
+          <p><strong>PDF check failed</strong> for Resume v2</p>
+          <p>Text on page 2 cannot be extracted — usually a text box or an image instead of real text.</p>
+          <p class="muted">The assistant explains the cause and offers the smallest fix. It never marks the file Ready.</p>
+          <span class="btn primary">Show me that section</span><span class="btn">Download DOCX instead</span>
+          <p class="muted">DOCX is allowed as a fallback, but the PDF stays marked as not passed. A file that failed a check is never shown as ready.</p>
+        </div>
+      </div>
+      <div class="note">未生成求职信时不显示求职信下载行（回到 P07 基础形态）。求职信检查失败时给出失败详情与 Copy text 降级出口，不把它包装成 Resume 的失败。检查失败时由 AI 说明具体原因并给最小修复动作，禁止只显示一个红色失败标记。</div>
+    </section>
+
+    <section class="sheet" id="p08">
+      <div class="intro"><h2>P08 / W08 · My profile（与 W02 同构：对话 + 清单）</h2><p>同一套组件、同一种语气，用户不必学两套界面。这里只放长期事实，每次申请的定制内容留在对应申请里。与 W02 唯一的差别是语气：那边是"建立"，这里是"更新"。</p></div>
+      <div class="frame" lang="en"><div class="bar"><strong>Job Application Workspace</strong><span>Alex · Account</span></div><div class="layout">
+        <aside class="sidebar"><p>Applications</p><p class="active">My profile</p><p>Settings</p></aside>
+        <div class="content"><div class="row"><div><h2>My profile</h2><p>Confirmed facts for future applications.</p></div><span class="btn">Add from a file</span></div>
+          <div class="cols">
+            <div>
+              <div class="box dashed"><h3>Assistant</h3><p>What do you want to add or fix?</p><span class="btn">Add a role</span><span class="btn">Add skills</span><span class="btn">Update from a newer resume</span></div>
+              <div class="field">Tell me what changed, in your own words…</div>
+              <div class="box"><div class="row"><strong>Operations Specialist · Northstar Co.</strong><span class="tag">Confirmed Sep 19</span></div><p>Jan 2022 – Present</p><p class="muted">Source: resume.docx · you edited one line</p><span class="btn">Edit</span><span class="btn">View evidence</span></div>
+              <div class="box"><div class="row"><strong>Skills</strong><span class="tag">3 confirmed</span></div><p>Project coordination · Reporting · Onboarding</p><span class="btn">Edit</span></div>
+            </div>
+            <aside>
+              <div class="box"><h3>Profile checklist</h3><p>[x] Contact<br>[x] Experience · 1 role<br>[ ] Education<br>[x] Skills<br>[ ] A second role</p><p class="muted">Optional items stay listed until you want them.</p></div>
+              <div class="notice"><h3>Changes affect future work</h3><p>Existing drafts and submitted files are not changed. Re-analyze or regenerate from a job when you choose.</p></div>
+              <div class="box"><h3>Source files</h3><span class="btn">View source files</span><p class="muted">Deleting a source file does not delete the facts you confirmed from it.</p></div>
+            </aside>
+          </div><div class="foot">Profile v3 · Last confirmed Sep 19, 2026 · [Discard unsaved changes]</div>
+        </div></div></div>
+      <div class="note">上传更新版简历时先给"拟变更"卡片逐条确认，不直接覆盖已确认事实。原「Preferences」标签取消：它会把偏好又变回一张表单，改为只在具体职位需要时就地提问。删除源文件与删除账户是两个范围，文案不得混用。Source files 入口保留在右栏，不单独占一个标签页。</div>
+    </section>
+
+    <section class="sheet" id="p09">
+      <div class="intro"><h2>P09 / W09 · 账户、用量与数据控制</h2><p>云端信任不是页脚一句话。用户要能看到处理范围、数据出口和明确的删除入口。</p></div>
+      <div class="frame" lang="en"><div class="bar"><strong>Job Application Workspace</strong><span>Alex · Account</span></div><div class="layout">
+        <aside class="sidebar"><p>Applications</p><p>My profile</p><p class="active">Settings</p></aside>
+        <div class="content"><h2>Settings</h2><div class="cols equal">
+          <div><div class="box"><h3>Account</h3><p>alex@example.com</p><p>Sign in using an email link.</p><span class="btn">Sign out</span></div><div class="box"><h3>What the assistant can see</h3><p>Each task sends only what it needs: the posting you selected, plus the parts of your profile that relate to it.</p><p class="muted">Your other applications, other postings, and full history are not sent.</p><span class="btn">See the exact fields sent</span></div><div class="box"><h3></h3>Beta usage</h3><p>3 of 10 draft runs remaining</p><p>Resets Oct 1, 2026</p><p class="muted">Illustrative quota. Failed runs are not charged. Downloading existing files is not limited by draft quota.</p><span class="btn">View usage details</span></div></div>
+          <div><div class="box"><h3>Your data</h3><p>Profile, source files, job postings, and application versions are stored in your private workspace.</p><p>[Data processing &amp; retention details]</p><span class="btn">Export my data</span><p class="muted">Your export includes profile data and stored documents. A secure download will appear here when ready.</p></div><div class="box dashed"><h3>Delete account and data</h3><p>Review exactly what will be removed. Active tasks will be stopped.</p><span class="btn">Review deletion</span></div></div>
+        </div></div></div></div>
+      <div class="note">"What the assistant can see" 必须能落到具体字段清单，不能只写一句"我们重视隐私"。额度为虚构示例，正式额度/重置策略待确认；不显示假价格或不可用的升级按钮。删除期限和模型数据政策须落实后才能成为对外承诺。</div>
+    </section>
+
+    <section class="sheet" id="dialogs">
+      <div class="intro"><h2>D01–D03 · 关键确认对话框</h2><p>状态变更、事实回写和删除的后果不同，必须分别确认。这里展示结构，不确定弹窗的最终视觉。</p></div>
+      <div class="states" lang="en">
+        <div class="mini"><h3>D01 · Mark as applied</h3><p>Operations Manager · Northstar Co.</p><div>Actual submission date *</div><div class="field">Sep 19, 2026 / Date unknown</div><div>Documents you submitted</div><div class="field">Resume v2 / Another version / External documents</div><div>Notes (optional)</div><div class="field">Applied on employer website</div><p class="muted">This records your action. We do not submit anything.</p><span class="btn">Cancel</span><span class="btn primary">Confirm applied</span></div>
+        <div class="mini"><h3>D01 · Update status</h3><p>Current: Applied</p><div class="field">New status: Interview</div><div class="field">Event date: Sep 24, 2026</div><div class="field">Note: Recruiter screen scheduled</div><p class="muted">History is preserved. Closed requires a reason. Jumping from Saved also asks for submission details or marks them unknown.</p><span class="btn">Cancel</span><span class="btn primary">Save update</span></div>
+        <div class="mini"><h3>D03 · Confirm a new fact</h3><div class="field large">I supervised two temporary team members during a launch.</div><p>[ ] I confirm this is accurate.</p><div class="field">Use only for this application<br>Also add to My profile</div><p class="muted">The source will be recorded as your confirmation, not as a claim found in the original resume.</p><span class="btn">Cancel</span><span class="btn primary">Save fact</span></div>
+        <div class="mini"><h3>D02 · Delete account?</h3><p>This removes your profile, source files, job postings, application history, and generated documents.</p><p>Active tasks will stop. Export your data first if needed.</p><p class="muted">[Show confirmed deletion and backup retention timeframes here]</p><div>Type DELETE to confirm</div><div class="field"></div><span class="btn">Keep account</span><span class="btn">Delete account and data</span></div>
+      </div>
+      <div class="note">D02 删除单条申请时只列该申请材料/事件；删除源文件时说明已提取事实是否保留。不能把这两种删除误写为“删除账户”。</div>
+    </section>
+
+    <section class="sheet" id="states">
+      <div class="intro"><h2>S01–S10 · 空态、失败与版本变化</h2><p>不能只设计成功路径。下面每个状态都有说明、保留的内容和下一步。</p></div>
+      <div class="states" lang="en">
+        <div class="mini"><h3>S01 · No applications yet</h3><p>Found a role on a job board or company site?</p><p>Paste the link and I'll read it, tell you how your experience lines up, and prepare a resume if you want one.</p><span class="btn primary">Add your first job</span><p class="muted">I don't search for jobs or apply anywhere for you.</p></div>
+        <div class="mini"><h3>S02 · We couldn't read this page</h3><div class="field">Your original URL is preserved</div><p>This site may require sign-in or restrict automated access.</p><div class="field large">Paste the full job description</div><span class="btn primary">Continue with pasted text</span><span class="btn">Try another link</span></div>
+        <div class="mini"><h3>S03 · Preparing your resume</h3><p>[Done] Drafting<br>[In progress] Reviewing claims<br>[Next] Checking document output</p><p>You can leave. Find this job in Applications when you return.</p><span class="btn">Back to applications</span><span class="btn">Cancel task</span><p class="muted">No artificial percentage or guaranteed completion time.</p></div>
+        <div class="mini"><h3>S04 · Resume ready. Letter failed.</h3><p>Your resume is saved. The letter service timed out.</p><span class="btn primary">Review resume</span><span class="btn">Retry letter</span><p class="muted">Retrying the failed step will not use an extra draft credit. Previous output is preserved.</p></div>
+        <div class="mini"><h3>S05 · Your profile has changed</h3><p>This draft uses Profile v3. Your current profile is v4.</p><span class="btn">Keep this version</span><span class="btn">Generate a new version</span><p class="muted">Submitted files will never be overwritten. New generation shows its quota cost before confirmation.</p></div>
+        <div class="mini"><h3>S06 · Draft quota reached</h3><p>You can still edit, track applications, and download existing files.</p><p>Next reset: Oct 1, 2026 [example]</p><span class="btn primary">Back to applications</span><span class="btn">View usage</span><p class="muted">No automatic purchase or hidden charge.</p></div>
+        <div class="mini"><h3>S07 · Your session expired</h3><p>You were signed out, or the connection dropped.</p><p>Your profile, drafts, and files are saved on the server.</p><span class="btn primary">Sign in again</span><span class="btn">Retry</span><p class="muted">Only text typed after the last successful save may be lost. We ask before discarding anything still open.</p></div>
+        <div class="mini"><h3>S08 · This job looks familiar</h3><p>You already added "Operations Manager · Northstar Co." on Sep 14, 2026.</p><div class="field">Open the existing application / Add as a separate application</div><span class="btn primary">Open existing</span><span class="btn">Add separately</span><p class="muted">We match on URL and job ID first. Same company or title alone is only a possible duplicate.</p></div>
+        <div class="mini"><h3>S09 · Analysis is out of date</h3><p>The posting text was edited after the fit analysis ran.</p><p class="muted">Analyzed Sep 19 · Posting updated Sep 21</p><span class="btn primary">Re-run analysis</span><span class="btn">Keep current view</span><p class="muted">Changing the posting or your profile never silently rewrites an existing draft or a submitted file.</p></div>
+        <div class="mini"><h3>S10 · Save failed</h3><p>Saving · Saved · <strong>Save failed</strong></p><div class="notice">Your last edit is not stored on the server yet. It is still only in this browser tab.</div><span class="btn primary">Retry save</span><span class="btn">Copy my text</span><p class="muted">A failed save never shows as Saved. Export always matches the last saved version, never the unsaved text on screen.</p></div>
+      </div>
+      <div class="note">补充状态：登录过期返回 P01，重新登录恢复服务器已保存内容，已退出用户看不到缓存的简历与职位正文；表单错误在顶部列摘要并逐项关联字段；保存失败明确显示 Retry save，不能继续显示 Saved。S08 不能把"疑似重复"当作确定重复，用户始终能创建独立申请。</div>
+    </section>
+
+    <section class="sheet" id="ai-fallback">
+      <div class="intro"><h2>S11–S12 · AI 派生文案的降级形态</h2><p>结构化输出（要求条数、改动归因、逐条证据）拿不到时，界面必须降级为定性表述并给重试入口。不显示 0、不伪造条目、不虚构改动理由。这是能力假设，未经验证。</p></div>
+      <div class="states" lang="en">
+        <div class="mini">
+          <h3>S12 · P03 when the count isn't available</h3>
+          <div class="box"><h3>Operations Manager<br>Northstar Co.</h3><span class="tag">Drafting</span><p>Analysis finished — open the detail to see what is covered</p><p class="muted">I could not split this posting into countable requirements, so there is no number here.</p><span class="btn">Open job</span><span class="btn">Re-run analysis</span></div>
+          <p class="muted">Never shows "0 of 9", and never invents a total.</p>
+        </div>
+        <div class="mini">
+          <h3>S12 · P05 when the fit is only qualitative</h3>
+          <div class="box dashed"><h3>Assistant · my read</h3><p>Your coordination background lines up with the main work described here. This time I could not reliably split the posting into individual requirements.</p><p class="muted">No count and no per-line mapping — you still get the plain-language read.</p><span class="btn primary">Re-run analysis</span><span class="btn">Read the posting myself</span></div>
+        </div>
+        <div class="mini">
+          <h3>S12 · P06 when I can't explain a change</h3>
+          <div class="box"><h3>This version changed</h3><p>The summary and two bullets were edited.</p><p class="muted">I can't reconstruct why each edit was made. Compare the versions instead of trusting a reason I can't show.</p><span class="btn">Compare v1 and v2</span></div>
+        </div>
+        <div class="mini">
+          <h3>S11 · the answer isn't in the posting</h3>
+          <div class="field">What is the team size?</div>
+          <p>"The posting does not state a team size. I can only answer from this posting and your profile."</p><span class="btn">Search the posting for "team"</span><span class="btn">Ask something else</span>
+          <p class="muted">No generic advice, no invented detail, no write actions.</p>
+        </div>
+      </div>
+      <div class="note">降级不是异常处理，是默认设计的一部分：AI 输出不稳定是必然的，界面不能把"拿不到"包装成"已完成"。S11 与 S12 必须在实现阶段用真实失败样本验证，而不是只在草图里写一句承诺。</div>
+    </section>
+
+    <section class="sheet" id="mobile">
+      <div class="intro"><h2>手机布局 · 录入、工作台与材料审核</h2><p>375px 组织方案：列表变卡片、侧栏变菜单或抽屉、证据移到段落下面。不是新增页面，也不减少核心功能。</p></div>
+      <div class="states" lang="en">
+        <div class="phone"><div class="bar"><strong>Build your profile</strong><span>Saved</span></div><div class="content"><div class="row"><span class="tag">Checklist · 1 waiting</span><span class="btn">Open</span></div><div class="box dashed"><h3>Assistant</h3><p>Upload your resume, paste the text, or tell me about your last job.</p><span class="btn">Attach</span><span class="btn">Paste</span><span class="btn">Type</span></div><div class="box"><div class="row"><strong>Experience</strong><span class="tag">Needs confirmation</span></div><p>Operations Specialist · Northstar Co.</p><span class="btn primary">Looks right</span><span class="btn">Edit</span></div><div class="field">Tell me anything I missed…</div></div></div>
+        <div class="phone"><div class="bar"><strong>Menu · Applications</strong><span>Alex</span></div><div class="content"><h2>Applications</h2><span class="btn primary">+ Add a job</span><div class="box dashed"><h4>Assistant</h4><p>Project Coordinator closes Sep 25 — resume is ready.</p></div><div class="field">Search your applications</div><div class="field">Status: All · Last updated</div><div class="box"><h3>Operations Manager</h3><p>Northstar Co.</p><span class="tag">Drafting</span><p>Updated today</p><span class="btn">View progress</span></div><div class="box"><h3>Project Coordinator</h3><p>Example Works</p><span class="tag">Ready</span><p>Closes Sep 25</p><span class="btn">Download</span></div></div></div>
+        <div class="phone"><div class="bar"><strong>&lt; Job / Documents</strong><span>Saved</span></div><div class="content"><h3>Northstar Co.</h3><div class="tabs"><span class="selected">Resume</span><span>Cover letter</span></div><div class="field">Section: Experience</div><div class="edit">Coordinated onboarding projects across sales and customer support.<p>[Edit text]</p></div><div class="box dashed"><h4>Rewrite this paragraph</h4><span class="btn">Shorter</span><span class="btn">Match requirement</span><span class="btn">I'll write it</span></div><div class="box dashed"><h4>Why I changed this</h4><p>Profile v3 / Northstar / bullet 2</p><span class="btn">Keep</span><span class="btn">Restore</span></div><p>[ ] I reviewed this version.</p><span class="btn primary">Review &amp; export</span><p class="muted">Full document preview available on the next page.</p></div></div>
+      </div>
+      <div class="note">录入页在窄屏把事实清单折叠为顶部抽屉，需专门验证：打开抽屉不遮挡输入框、键盘弹出时不被顶飞、待处理数量可读。其余待测项：长岗位名、长公司名、横屏、焦点可见性和长文滚动。本轮草图不代表已完成这些可用性验证。</div>
+    </section>
+    <footer class="mini"><strong>评审停点：</strong>请按页面编号反馈保留/合并/删减/调整。当前未进入高保真 UI、最终设计系统、交互原型或产品开发。详细范围与流程见同目录 Markdown 文档。</footer>
+  </main>
+</body>
+</html>

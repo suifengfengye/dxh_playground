@@ -78,3 +78,25 @@ namespace = ("user_id", "preferences")
 
 ./06_memory_in_tool.py
 
+## 2.3 使用mysql存储长期记忆
+
+需要安装的依赖：
+```shell
+python -m pip install langgraph-checkpoint-mysql==3.0.0 pymysql==1.1.2 cryptography==46.0.3 
+python -m pip install aiomysql==0.3.2 asyncmy==0.2.11
+```
+
+```python
+from langgraph.store.mysql import PyMySQLStore
+DB_URI = "mysql+pymysql://root:123456@localhost:3306/mysql?charset=utf8mb4"
+with (
+    PyMySQLStore.from_conn_string(DB_URI) as store
+):
+    store.setup()
+
+    # 存一点数据进去
+    namespace = ("dxh_123", "preferences")
+    store.put(namespace, "fruit", { "like": ["orange", "banana"], "dislike": ["apple"] })
+    store.put(namespace, "sport", { "like": ["basketball", "football"], "dislike": ["pingpong"] })
+    store.put(namespace, "color", { "like": ["red", "yellow"], "dislike": ["绿色"] })
+```

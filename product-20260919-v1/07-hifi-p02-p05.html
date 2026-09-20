@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace · High-fidelity P02 / P05 · light mode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============ Layer 1: primitive ============ */
+    :root {
+      --neutral-50: #FAFAF9;  --neutral-100: #F5F5F4; --neutral-200: #E7E5E4;
+      --neutral-300: #D6D3D1; --neutral-600: #57534E; --neutral-800: #292524; --neutral-900: #1C1917;
+      --teal-50: #F0FDFA; --teal-200: #99F6E4; --teal-600: #0D9488; --teal-700: #0F766E;
+      --amber-50: #FFFBEB; --amber-200: #FDE68A; --amber-700: #B45309;
+      --green-50: #F0FDF4; --green-200: #BBF7D0; --green-700: #15803D;
+      --red-50: #FEF2F2; --red-200: #FECACA; --red-600: #DC2626;
+
+      /* ============ Layer 2: semantic ============ */
+      --color-canvas: var(--neutral-50);   --color-surface: #FFFFFF;
+      --color-border: var(--neutral-200);  --color-border-strong: var(--neutral-300);
+      --color-text: var(--neutral-900);    --color-text-muted: var(--neutral-600);
+      --color-primary: var(--neutral-900); --color-primary-hover: var(--neutral-800);
+      --color-on-primary: #FFFFFF;
+      --color-attention: var(--amber-700); --color-success: var(--green-700);
+      --color-danger: var(--red-600);      --color-focus-ring: var(--teal-700);
+
+      /* AI semantic layer — the only place saturated colour is allowed */
+      --ai-surface: var(--teal-50); --ai-border: var(--teal-200);
+      --ai-text: var(--teal-700);   --ai-mark: var(--teal-600);
+
+      --font-ui: 'Lexend', system-ui, -apple-system, sans-serif;
+      --font-reading: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+
+      --text-caption: 12px; --text-sm: 13px; --text-body: 15px;
+      --text-lg: 18px; --text-h3: 20px; --text-h2: 24px; --text-h1: 30px;
+      --leading-tight: 1.25; --leading-body: 1.55; --measure: 68ch;
+
+      --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+      --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-12: 48px;
+
+      --radius-sm: 4px; --radius-md: 6px; --radius-lg: 10px;
+      --motion-fast: 120ms; --motion-base: 180ms;
+      --ease-out: cubic-bezier(.16, 1, .3, 1);
+      --shadow-overlay: 0 1px 2px rgba(28,25,23,.06), 0 8px 24px rgba(28,25,23,.08);
+    }
+
+    /* ============ Base ============ */
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: var(--color-canvas); color: var(--color-text);
+      font: 400 var(--text-body)/var(--leading-body) var(--font-ui);
+    }
+    h1, h2, h3 { margin: 0; font-weight: 600; line-height: var(--leading-tight); }
+    p { margin: 0 0 var(--space-3); }
+    a { color: var(--ai-text); text-decoration: none; border-bottom: 1px solid currentColor; }
+    a:hover { color: var(--color-text); }
+    ul { margin: 0; padding: 0; list-style: none; }
+    :focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; border-radius: var(--radius-sm); }
+    .num { font-variant-numeric: tabular-nums; }
+
+    /* ============ Review chrome (not part of the product) ============ */
+    .review { padding: var(--space-8) max(var(--space-6), calc((100% - 1240px) / 2)); background: var(--color-surface); border-bottom: 1px solid var(--color-border-strong); }
+    .review h1 { font-size: var(--text-h2); margin-bottom: var(--space-2); }
+    .review .kicker { font-size: var(--text-caption); letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-muted); }
+    .review p { max-width: var(--measure); color: var(--color-text-muted); font-family: var(--font-reading); }
+    .review nav { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); margin-top: var(--space-4); font-size: var(--text-sm); }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: var(--space-8) var(--space-6) var(--space-12); }
+    .sheet { margin-bottom: var(--space-12); scroll-margin-top: var(--space-5); }
+    .sheet > h2 { font-size: var(--text-h3); margin-bottom: var(--space-1); }
+    .sheet > .sheet-sub { color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--space-5); font-family: var(--font-reading); }
+
+    /* ============ Layer 3: components ============ */
+    .btn {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      border: 1px solid transparent; border-radius: var(--radius-md);
+      padding: 9px var(--space-4); font: 500 var(--text-sm)/1 var(--font-ui);
+      cursor: pointer; transition: background var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out), border-color var(--motion-fast) var(--ease-out);
+      background: transparent; color: var(--color-text); white-space: nowrap;
+    }
+    .btn-primary { background: var(--color-primary); color: var(--color-on-primary); }
+    .btn-primary:hover { background: var(--color-primary-hover); }
+    .btn-secondary { background: var(--color-surface); border-color: var(--color-border-strong); }
+    .btn-secondary:hover { background: var(--neutral-100); }
+    .btn-ghost { color: var(--color-text-muted); }
+    .btn-ghost:hover { background: var(--neutral-100); color: var(--color-text); }
+    .btn-danger { background: var(--color-surface); border-color: var(--red-200); color: var(--color-danger); }
+    .btn-danger:hover { background: var(--red-50); }
+    .btn-ai { background: var(--ai-surface); border-color: var(--ai-border); color: var(--ai-text); }
+    .btn-ai:hover { background: #E6FAF6; }
+    .btn-sm { padding: 6px var(--space-3); font-size: var(--text-sm); }
+    .btn-block { width: 100%; justify-content: center; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+    .chip {
+      display: inline-flex; align-items: center; gap: 5px; border: 1px solid;
+      border-radius: var(--radius-sm); padding: 2px 7px;
+      font: 500 var(--text-caption)/1.5 var(--font-ui); white-space: nowrap;
+    }
+    .chip-neutral  { background: var(--neutral-100); border-color: var(--color-border-strong); color: var(--color-text-muted); }
+    .chip-attention{ background: var(--amber-50); border-color: var(--amber-200); color: var(--color-attention); }
+    .chip-success  { background: var(--green-50); border-color: var(--green-200); color: var(--color-success); }
+    .chip-ai       { background: var(--ai-surface); border-color: var(--ai-border); color: var(--ai-text); }
+
+    /* AI block: label + left mark + tinted surface — three encodings, never colour alone */
+    .ai-block {
+      position: relative; background: var(--ai-surface); border: 1px solid var(--ai-border);
+      border-left: 3px solid var(--ai-mark); border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5);
+    }
+    .ai-label { display: block; font: 600 var(--text-caption)/1 var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--ai-text); margin-bottom: var(--space-3); }
+    .ai-block p { font-family: var(--font-reading); }
+    .ai-block .disclaimer { font-size: var(--text-caption); color: var(--color-text-muted); font-family: var(--font-ui); margin: var(--space-3) 0 0; }
+
+    .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4); }
+    .card + .card, .ai-block + .card, .card + .ai-block, .ai-block + .ai-block { margin-top: var(--space-4); }
+    .card-title { font-size: var(--text-body); margin-bottom: var(--space-3); }
+    .card-quiet { background: var(--neutral-50); }
+    .card-quiet p { margin: var(--space-2) 0 0; font-size: var(--text-sm); color: var(--color-text-muted); font-family: var(--font-reading); }
+
+    .fact { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-3); margin-top: var(--space-3); }
+    .fact-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-2); }
+    .fact-title { font-weight: 600; font-size: var(--text-sm); }
+    .fact-body { font-family: var(--font-reading); font-size: var(--text-sm); color: var(--color-text); margin-bottom: var(--space-3); }
+    .fact-body .quote { color: var(--color-text-muted); }
+
+    .attach-row { display: flex; align-items: center; gap: var(--space-3); margin: var(--space-4) 0; font-size: var(--text-sm); color: var(--color-text-muted); }
+
+    .composer { display: flex; gap: var(--space-2); margin-top: var(--space-4); }
+    .input {
+      width: 100%; background: var(--color-surface); border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-md); padding: 10px var(--space-3);
+      font: 400 var(--text-body)/1.4 var(--font-ui); color: var(--color-text);
+    }
+    .input::placeholder { color: var(--color-text-muted); }
+
+    .rail .group + .group { margin-top: var(--space-4); }
+    .group-label { display: block; font: 600 var(--text-caption)/1 var(--font-ui); letter-spacing: .04em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: var(--space-2); }
+    .checklist li { display: flex; gap: var(--space-2); font-size: var(--text-sm); padding: 3px 0; }
+    .checklist li::before { content: "○"; color: var(--color-text-muted); flex: none; }
+    .checklist li.done::before { content: "✓"; color: var(--color-success); font-weight: 600; }
+    .checklist li.done { color: var(--color-text); }
+    .checklist li.attention::before { content: "!"; color: var(--color-attention); font-weight: 600; }
+    .muted-list li { color: var(--color-text-muted); }
+
+    .table { width: 100%; border-collapse: collapse; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+    .table th, .table td { text-align: left; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); vertical-align: top; font-size: var(--text-sm); }
+    .table th { background: var(--neutral-100); font-weight: 600; color: var(--color-text-muted); font-size: var(--text-caption); letter-spacing: .04em; text-transform: uppercase; }
+    .table tr:last-child td { border-bottom: 0; }
+
+    .tabs { display: flex; gap: var(--space-5); border-bottom: 1px solid var(--color-border); margin: var(--space-5) 0; }
+    .tabs span { padding: 0 0 var(--space-3); font-size: var(--text-sm); font-weight: 500; color: var(--color-text-muted); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+    .tabs .on { color: var(--color-text); border-bottom-color: var(--color-text); }
+
+    .appbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); background: var(--color-surface); border-bottom: 1px solid var(--color-border); padding: var(--space-3) var(--space-6); }
+    .appbar-left, .appbar-right { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); }
+    .brandmark { font-weight: 600; letter-spacing: -.01em; }
+    .savestate { color: var(--color-text-muted); font-size: var(--text-caption); }
+    .crumb-sep { color: var(--color-text-muted); }
+
+    .page-title { font-size: var(--text-h1); letter-spacing: -.02em; }
+    .page-sub { font-family: var(--font-reading); color: var(--color-text-muted); margin-top: var(--space-2); }
+    .text-muted { color: var(--color-text-muted); font-size: var(--text-sm); }
+    .plain li { font-family: var(--font-reading); font-size: var(--text-sm); padding: 3px 0; }
+    .answer { font-family: var(--font-reading); margin: var(--space-3) 0; }
+
+    .frame { border: 1px solid var(--color-border-strong); border-radius: var(--radius-lg); overflow: hidden; background: var(--color-canvas); }
+    .p02-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) 340px; gap: var(--space-6); padding: var(--space-6); }
+    .p02-grid main { max-width: 760px; }
+    .p05-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) 340px; gap: var(--space-6); }
+    .page { padding: var(--space-6); }
+    .job-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-5); }
+    .stack > * + * { margin-top: var(--space-4); }
+
+    /* ============ Token reference ============ */
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-3); }
+    .swatch { border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; background: var(--color-surface); }
+    .swatch .dot { height: 46px; border-bottom: 1px solid var(--color-border); }
+    .swatch .meta { padding: var(--space-2) var(--space-3); font-size: var(--text-caption); }
+    .swatch .meta b { display: block; font-weight: 600; }
+    .swatch .meta span { color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+    .cols2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-4); }
+
+    @media (max-width: 900px) {
+      .p02-grid, .p05-grid { grid-template-columns: 1fr; }
+      .job-head { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="review">
+  <div class="kicker">product-20260919-v1 / high-fidelity / light mode / 待评审</div>
+  <h1>Workspace 高保真稿 · P02 建立资料 + P05 职位适配</h1>
+  <p>按 06-design-system.md 已确认的 Token 出稿。只做浅色模式；按钮用墨黑，青色只用于标记 AI 内容。下方先列 Token 与组件，便于你一次性核对系统本身，再核对页面。</p>
+  <p><strong>本稿仍是静态稿：</strong>控件不执行业务，表单不可提交，示例数据全部虚构。</p>
+  <nav>
+    <a href="#system">Token 与组件</a>
+    <a href="#p02">P02 建立资料</a>
+    <a href="#p05">P05 职位适配</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <!-- ===================== TOKEN / COMPONENT REFERENCE ===================== -->
+  <section class="sheet" id="system">
+    <h2>Token 与组件参考</h2>
+    <p class="sheet-sub">这一节不是产品页面，是给你核对设计系统用的。产品里任何组件都不直接写十六进制，只引用语义 Token。</p>
+
+    <div class="swatches">
+      <div class="swatch"><div class="dot" style="background:var(--color-canvas)"></div><div class="meta"><b>canvas</b><span>#FAFAF9</span></div></div>
+      <div class="swatch"><div class="dot" style="background:var(--color-surface)"></div><div class="meta"><b>surface</b><span>#FFFFFF</span></div></div>
+      <div class="swatch"><div class="dot" style="background:var(--color-border)"></div><div class="meta"><b>border</b><span>#E7E5E4</span></div></div>
+      <div class="swatch"><div class="dot" style="background:var(--color-text)"></div><div class="meta"><b>text / primary</b><span>#1C1917</span></div></div>
+      <div class="swatch"><div class="dot" style="background:var(--color-attention)"></div><div class="meta"><b>attention</b><span>#B45309</span></div></div>
+      <div class="swatch"><div class="dot" style="background:var(--color-success)"></div><div class="meta"><b>success</b><span>#15803D</span></div></div>
+      <div class="swatch"><div class="dot" style="background:var(--color-danger)"></div><div class="meta"><b>danger</b><span>#DC2626</span></div></div>
+      <div class="swatch"><div class="dot" style="background:var(--ai-mark)"></div><div class="meta"><b>AI mark</b><span>#0D9488</span></div></div>
+    </div>
+
+    <div class="cols2" style="margin-top:var(--space-6)">
+      <div class="card">
+        <h3 class="card-title">Buttons</h3>
+        <div class="btn-row" style="margin-bottom:var(--space-3)">
+          <button class="btn btn-primary">Tailor resume</button>
+          <button class="btn btn-secondary">Looks right</button>
+          <button class="btn btn-ghost">Finish later</button>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-ai">Add a fact</button>
+          <button class="btn btn-danger">Delete account and data</button>
+        </div>
+        <p class="text-muted" style="margin-top:var(--space-3)">主按钮墨黑；AI 动作单独一档（浅青底 + 青边），不与主按钮抢层级。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Chips</h3>
+        <div class="btn-row">
+          <span class="chip chip-neutral">Saved</span>
+          <span class="chip chip-attention">Needs confirmation</span>
+          <span class="chip chip-success">Supported</span>
+          <span class="chip chip-ai">Assistant</span>
+        </div>
+        <p class="text-muted" style="margin-top:var(--space-3)">状态多，所以只有"需要你做事"和"已通过"用色；其余保持中性，避免变成彩虹。</p>
+      </div>
+
+      <div class="ai-block">
+        <span class="ai-label">Assistant</span>
+        <p>AI 内容固定三重编码：<strong>Assistant 标签 + 左侧 3px 色条 + 浅青底</strong>。灰度或色盲环境下依然可辨，不依赖颜色单独表达。</p>
+        <p class="disclaimer">这一条是整套系统的关键约束，不是装饰。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">State semantics</h3>
+        <ul class="plain">
+          <li>Pass / Confirmed → success 绿</li>
+          <li>Needs confirmation / 临近截止 → attention 琥珀</li>
+          <li>Gap → 中性（是事实，不是警报）</li>
+          <li>Not stated、结构化结果不可用 → 中性，<strong>不显示 0、不用红色</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== P02 ===================== -->
+  <section class="sheet" id="p02">
+    <h2>P02 建立资料 · 对话 + 事实清单</h2>
+    <p class="sheet-sub">硬必需只有姓名、邮箱、一段真实经历。对话负责输入与追问，右栏清单负责"到底还缺什么"。</p>
+
+    <div class="frame">
+      <header class="appbar">
+        <div class="appbar-left"><span class="brandmark">Workspace</span></div>
+        <div class="appbar-right">
+          <span class="savestate">Saved · just now</span>
+          <button class="btn btn-ghost btn-sm">Finish later</button>
+        </div>
+      </header>
+
+      <div class="p02-grid">
+        <main class="stack">
+          <h1 class="page-title">Build your profile</h1>
+          <p class="page-sub" style="margin:0">Upload your resume, paste the text, or just tell me about your most recent job.</p>
+
+          <div class="ai-block">
+            <span class="ai-label">Assistant</span>
+            <p>Let's start with what you already have. Any of these works — you can change everything after.</p>
+            <div class="btn-row">
+              <button class="btn btn-secondary btn-sm">Attach a file</button>
+              <button class="btn btn-secondary btn-sm">Paste resume text</button>
+              <button class="btn btn-secondary btn-sm">Just type it</button>
+            </div>
+          </div>
+
+          <div class="attach-row">
+            <span class="chip chip-neutral">resume.docx</span>
+            <span>Reading your resume…</span>
+          </div>
+
+          <div class="ai-block">
+            <span class="ai-label">Assistant</span>
+            <p>I read it. Confirm, fix, or remove anything — nothing is used until you confirm it.</p>
+
+            <div class="fact">
+              <div class="fact-head"><span class="fact-title">Contact</span><span class="chip chip-attention">Needs confirmation</span></div>
+              <div class="fact-body">Alex Morgan · alex@example.com · Austin, TX</div>
+              <div class="btn-row"><button class="btn btn-primary btn-sm">Looks right</button><button class="btn btn-secondary btn-sm">Edit</button></div>
+            </div>
+
+            <div class="fact">
+              <div class="fact-head"><span class="fact-title">Experience · Operations Specialist</span><span class="chip chip-attention">Needs confirmation</span></div>
+              <div class="fact-body">Northstar Co. · <span class="num">Jan 2022 – Present</span><br><span class="quote">"Coordinated onboarding projects across sales and customer support."</span></div>
+              <div class="btn-row"><button class="btn btn-primary btn-sm">Looks right</button><button class="btn btn-secondary btn-sm">Edit</button><button class="btn btn-ghost btn-sm">Remove</button></div>
+            </div>
+
+            <div class="fact">
+              <div class="fact-head"><span class="fact-title">Education</span><span class="chip chip-neutral">Missing a detail</span></div>
+              <div class="fact-body">I found a degree with no field of study. Optional — add it or skip.</div>
+              <div class="btn-row"><button class="btn btn-secondary btn-sm">Add detail</button><button class="btn btn-ghost btn-sm">Skip</button></div>
+            </div>
+          </div>
+
+          <div class="ai-block">
+            <span class="ai-label">Assistant</span>
+            <p>Two things most people add. Both optional — or go straight to your workspace.</p>
+            <div class="btn-row">
+              <button class="btn btn-secondary btn-sm">Skills</button>
+              <button class="btn btn-secondary btn-sm">A second role</button>
+              <button class="btn btn-ghost btn-sm">Nothing else for now</button>
+            </div>
+          </div>
+
+          <div class="composer">
+            <input class="input" type="text" placeholder="Tell me anything I missed…" aria-label="Message the assistant">
+            <button class="btn btn-primary">Send</button>
+          </div>
+        </main>
+
+        <aside class="rail stack">
+          <div class="card">
+            <h2 class="card-title">What's in your profile</h2>
+
+            <div class="group">
+              <span class="group-label">Required to start</span>
+              <ul class="checklist">
+                <li class="done">Contact — confirmed</li>
+                <li class="done">One experience — confirmed</li>
+              </ul>
+            </div>
+
+            <div class="group">
+              <span class="group-label">Waiting on you · 1</span>
+              <ul class="checklist">
+                <li class="attention">Education — needs a field of study</li>
+              </ul>
+            </div>
+
+            <div class="group">
+              <span class="group-label">Optional</span>
+              <ul class="checklist">
+                <li>Skills</li>
+                <li>A second role</li>
+                <li>Projects</li>
+              </ul>
+            </div>
+
+            <div class="group">
+              <span class="group-label">Asked later, only when a job needs it</span>
+              <ul class="checklist muted-list">
+                <li>Work authorization</li>
+                <li>Target roles / locations</li>
+                <li>Salary preference</li>
+              </ul>
+            </div>
+
+            <button class="btn btn-primary btn-block" style="margin-top:var(--space-5)">Start with what I have</button>
+          </div>
+
+          <div class="card card-quiet">
+            <strong>Only contact and one role are required.</strong>
+            <p>Everything else can wait. Preferences are never asked here — a posting asks when it actually matters.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== P05 ===================== -->
+  <section class="sheet" id="p05">
+    <h2>P05 职位适配 · AI 先给结论与下一步</h2>
+    <p class="sheet-sub">首屏是结论与建议，逐条证据在后。右栏是可追问的范围与边界。</p>
+
+    <div class="frame">
+      <header class="appbar">
+        <div class="appbar-left">
+          <a href="#p05">Applications</a>
+          <span class="crumb-sep">/</span>
+          <span>Northstar Co.</span>
+        </div>
+        <div class="appbar-right">
+          <span class="chip chip-neutral">Saved</span>
+          <button class="btn btn-ghost btn-sm">Update status</button>
+        </div>
+      </header>
+
+      <div class="page">
+        <div class="job-head">
+          <div>
+            <h1 class="page-title">Operations Manager</h1>
+            <p class="page-sub">Northstar Co. · Austin, TX · Hybrid · Full-time</p>
+            <p class="text-muted">Imported <span class="num">Sep 19, 2026</span> · Deadline not stated · <a href="#p05">Original posting</a></p>
+          </div>
+          <button class="btn btn-primary">Tailor resume</button>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <span class="on">Fit</span><span>Job posting</span><span>Activity</span>
+        </div>
+
+        <div class="p05-grid">
+          <div class="stack">
+            <div class="ai-block">
+              <span class="ai-label">Assistant</span>
+              <p>Your cross-functional coordination work covers the core of this role. One requirement has no evidence: managing a team of five. Everything else is either supported by your profile or not stated in the posting.</p>
+              <p><strong>What I'd do next:</strong> if you have led anyone — even contractors or interns — add it as a fact and I'll re-check. If not, keep it as a gap. It is one line, not a blocker.</p>
+              <div class="btn-row">
+                <button class="btn btn-ai btn-sm">Add a fact</button>
+                <button class="btn btn-secondary btn-sm">Keep as a gap</button>
+              </div>
+              <p class="disclaimer">Based on this posting and Profile v3. Not a prediction of interview success, and not a hiring decision.</p>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr><th scope="col">Job requirement</th><th scope="col">Your evidence / action</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cross-functional projects</td>
+                  <td><span class="chip chip-success">Supported</span><p style="margin:var(--space-2) 0 0">Northstar experience, bullet 2 · <a href="#p05">View source</a></p></td>
+                </tr>
+                <tr>
+                  <td>Manage a team of 5</td>
+                  <td><span class="chip chip-neutral">Gap</span><p style="margin:var(--space-2) 0 0">No direct management evidence · <a href="#p05">Add a fact</a></p></td>
+                </tr>
+                <tr>
+                  <td>US work authorization</td>
+                  <td><span class="chip chip-attention">Needs confirmation</span><p style="margin:var(--space-2) 0 0">You have not provided this · <a href="#p05">Review</a></p></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <aside class="rail stack">
+            <div class="ai-block">
+              <span class="ai-label">Ask about this job</span>
+              <input class="input" type="text" value="Does this posting require sponsorship?" aria-label="Your question about this job">
+              <p class="answer">"No — it says you must be authorized to work in the US, and sponsorship is not mentioned anywhere." <a href="#p05">Show the line</a></p>
+              <button class="btn btn-secondary btn-sm">Ask something else</button>
+              <p class="disclaimer">Answers use only this posting and your profile. Not a general chat, and it cannot change anything.</p>
+            </div>
+
+            <div class="card">
+              <h2 class="card-title">What I could not determine</h2>
+              <ul class="plain">
+                <li>Visa sponsorship: not stated in the posting</li>
+                <li>Company culture: not researched — I only read this posting</li>
+                <li>Work arrangement: hybrid, matches what you told me</li>
+              </ul>
+              <button class="btn btn-secondary btn-sm" style="margin-top:var(--space-3)">View exact requirements</button>
+            </div>
+
+            <div class="card">
+              <h2 class="card-title">Your decision</h2>
+              <p class="text-muted">Create a draft, keep this for later, or record an application you made elsewhere. Nothing is submitted for you.</p>
+              <div class="btn-row">
+                <button class="btn btn-secondary btn-sm">Keep saved</button>
+                <button class="btn btn-secondary btn-sm">Mark as applied</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="card card-quiet">
+    <strong>评审停点：</strong>请核对 (1) 字体在实际字号下的观感与可读性；(2) 墨黑主按钮 + 青色 AI 的层级是否成立；(3) 事实卡片与"需要确认"的视觉强度是否够；(4) 右栏 340px 在高密度信息下是否太窄。
+    确认后才铺其余页面（P01、P03、P04、P06、P07、P08、P09 及全部异常态）。仍未进入：交互原型、真实代码、暗色模式、简历 PDF 模板字体。
+  </footer>
+
+</div>
+</body>
+</html>
