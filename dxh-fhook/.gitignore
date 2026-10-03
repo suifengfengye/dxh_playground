@@ -1,7 +1,0 @@
-**/.turbo/**
-**/node_modules/**
-**/dist/**
-
-.cspellcache
-
-doc_build
