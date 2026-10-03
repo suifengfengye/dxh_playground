@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JEV vs LLM 耗时对比</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%233987e5'/><rect x='8' y='14' width='16' height='4' rx='2' fill='%23fff'/></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-palette="#3987e5,#d95926">
+
+<header class="topbar">
+  <div class="titles">
+    <h1>JEV vs DeepSeek</h1>
+    <p class="sub">同一个判断任务：一份简历 × 6 个岗位，逐个判断是否匹配</p>
+  </div>
+  <div class="actions">
+    <button id="run" class="btn btn-primary" type="button">开始对比</button>
+    <button id="copy" class="btn btn-ghost" type="button" disabled>复制结果 JSON</button>
+  </div>
+</header>
+
+<p id="status" class="status" role="status">点击「开始对比」运行</p>
+
+<section class="panels">
+
+  <article class="panel" data-side="jev">
+    <div class="panel-head">
+      <span class="dot" aria-hidden="true"></span>
+      <h2>JEV<span class="model">System One · jev-latest</span></h2>
+      <span class="tag">1 次请求 / 6 个判断</span>
+    </div>
+
+    <div class="metric">
+      <span class="metric-value" id="jev-time">0</span>
+      <span class="metric-unit">ms</span>
+    </div>
+
+    <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" id="jev-meter">
+      <div class="meter-fill" id="jev-bar"></div>
+    </div>
+
+    <div class="meter-foot">
+      <span id="jev-count">0 / 6 岗位</span>
+      <span id="jev-avg">—</span>
+    </div>
+
+    <ul class="results" id="jev-results"></ul>
+  </article>
+
+  <article class="panel" data-side="llm">
+    <div class="panel-head">
+      <span class="dot" aria-hidden="true"></span>
+      <h2>DeepSeek<span class="model">deepseek-flash · 关闭思考</span></h2>
+      <span class="tag">6 次请求 / 每次 1 个判断</span>
+    </div>
+
+    <div class="metric">
+      <span class="metric-value" id="llm-time">0</span>
+      <span class="metric-unit">ms</span>
+    </div>
+
+    <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" id="llm-meter">
+      <div class="meter-fill" id="llm-bar"></div>
+    </div>
+
+    <div class="meter-foot">
+      <span id="llm-count">0 / 6 岗位</span>
+      <span id="llm-avg">—</span>
+    </div>
+
+    <ul class="results" id="llm-results"></ul>
+  </article>
+
+</section>
+
+<section class="verdict" id="verdict" hidden>
+  <p class="hero-label">同样的 6 个判断，JEV 快</p>
+  <div class="hero">
+    <span class="hero-value" id="speedup">—</span>
+    <span class="hero-unit">×</span>
+  </div>
+  <div class="kpis">
+    <div class="kpi">
+      <span class="kpi-label">JEV 总耗时</span>
+      <span class="kpi-value" id="kpi-jev">—</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">DeepSeek 总耗时</span>
+      <span class="kpi-value" id="kpi-llm">—</span>
+    </div>
+    <div class="kpi">
+      <span class="kpi-label">平均每个判断</span>
+      <span class="kpi-value" id="kpi-avg">—</span>
+    </div>
+  </div>
+</section>
+
+<footer class="notes">
+  <h3>对比口径</h3>
+  <ul>
+    <li><strong>JEV</strong>：1 次请求返回 6 个判断 —— 模型原生支持在同一次请求里并行评估多个独立问题，合并提问基本不增加响应时间。</li>
+    <li><strong>DeepSeek</strong>：每个岗位单独一次请求 —— 把 6 个岗位塞进一次调用容易上下文串味，且一次性输出 6 个判断的 json 可靠性明显下降。</li>
+    <li>两边都是「单次调用 · 直接出结论」，DeepSeek 关闭思考模式，两边使用同一套匹配判断标准。</li>
+    <li>正式计时前两边各做一次预热，把 TLS 握手与模型冷启动的成本排除在计时之外。</li>
+    <li>耗时由服务端 <code>perf_counter()</code> 测量，不含浏览器与网络开销。</li>
+  </ul>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

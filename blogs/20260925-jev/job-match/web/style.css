@@ -1,0 +1,392 @@
+/* JEV vs DeepSeek 耗时对比
+   配色取自已验证的 categorical 调色板（深/浅两套都跑过对比度与色盲分离校验）：
+   JEV = 蓝（slot 1），DeepSeek = 橙（slot 2）。
+   文字一律用 text token，identity 由标题前的色点承担 —— 避免用数据色写文字。 */
+
+:root {
+  color-scheme: light;
+
+  --page:           #f9f9f7;
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --hairline:       rgba(11, 11, 11, 0.10);
+  --gridline:       #e1e0d9;
+
+  --series-jev:     #2a78d6;
+  --series-llm:     #eb6834;
+
+  --status-good:    #0ca30c;
+  --status-bad:     #d03b3b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page:           #0d0d0d;
+    --surface-1:      #1a1a19;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --hairline:       rgba(255, 255, 255, 0.10);
+    --gridline:       #2c2c2a;
+    --series-jev:     #3987e5;
+    --series-llm:     #d95926;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page:           #0d0d0d;
+  --surface-1:      #1a1a19;
+  --text-primary:   #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted:     #898781;
+  --hairline:       rgba(255, 255, 255, 0.10);
+  --gridline:       #2c2c2a;
+  --series-jev:     #3987e5;
+  --series-llm:     #d95926;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 32px clamp(16px, 4vw, 48px) 48px;
+  background: var(--page);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+               "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 顶栏 ---------- */
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.sub {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.actions { display: flex; gap: 10px; }
+
+.btn {
+  font: inherit;
+  font-weight: 550;
+  padding: 11px 22px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s, opacity .15s;
+}
+
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--surface-1);
+}
+.btn-primary:hover:not(:disabled) { opacity: .85; }
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--hairline);
+  color: var(--text-secondary);
+}
+.btn-ghost:hover:not(:disabled) { border-color: var(--text-muted); color: var(--text-primary); }
+
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+
+.status {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  min-height: 1.5em;
+}
+.status[data-state="error"] { color: var(--status-bad); }
+
+/* ---------- 两个面板 ---------- */
+
+.panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 860px) {
+  .panels { grid-template-columns: minmax(0, 1fr); }
+}
+
+.panel {
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  padding: 22px 24px 24px;
+  min-width: 0;
+}
+
+.panel-head {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+/* identity 由色点承担，标题本身用文字色 */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+  align-self: center;
+}
+[data-side="jev"] .dot { background: var(--series-jev); }
+[data-side="llm"] .dot { background: var(--series-llm); }
+
+.panel-head h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.model {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.tag {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+/* ---------- 大数字（stat tile value：比例数字，不用 tabular） ---------- */
+
+.metric {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+
+.metric-value {
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.metric-unit {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* ---------- 进度条：填充色带 4px 圆头，基线端切平 ---------- */
+
+.meter {
+  height: 20px;
+  border-radius: 0 4px 4px 0;
+  /* 轨道用中性灰而不是色相的暗一档：0% 时整条都是轨道，
+     带色相的轨道会被误读成「已经填满了」。identity 由填充色承担。 */
+  background: color-mix(in oklab, var(--text-primary) 10%, var(--surface-1));
+  overflow: hidden;
+}
+
+[data-side="jev"] .meter { --series: var(--series-jev); }
+[data-side="llm"] .meter { --series: var(--series-llm); }
+
+.meter-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 0 4px 4px 0;
+  background: var(--series);
+  transition: width .45s cubic-bezier(.22, .61, .36, 1);
+}
+
+[data-side="jev"] .meter-fill { --series: var(--series-jev); }
+[data-side="llm"] .meter-fill { --series: var(--series-llm); }
+
+.meter-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 9px 0 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 判断结果 ---------- */
+
+.results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--gridline);
+}
+
+.results li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 8px;
+  margin: 0 -8px;
+  border-radius: 8px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--gridline);
+  cursor: default;
+}
+.results li:last-child { border-bottom: none; }
+.results li:hover { background: color-mix(in srgb, var(--text-primary) 5%, transparent); }
+
+.results .job {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-secondary);
+}
+
+/* 状态永远 图标 + 文字，不靠颜色单独表意 */
+.results .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 550;
+  white-space: nowrap;
+}
+.results .badge[data-ok="yes"] { color: var(--status-good); }
+.results .badge[data-ok="no"]  { color: var(--status-bad); }
+.results .badge[data-ok="err"] { color: var(--text-muted); }
+
+.results .num {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ---------- 结论区：全页唯一的 hero 数字 ---------- */
+
+.verdict {
+  margin-top: 24px;
+  padding: 32px 24px 28px;
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.hero-label {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.hero {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+}
+
+.hero-value {
+  font-size: 76px;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.hero-unit {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--gridline);
+}
+
+@media (max-width: 640px) {
+  .kpis { grid-template-columns: minmax(0, 1fr); }
+}
+
+.kpi { display: flex; flex-direction: column; gap: 3px; }
+
+.kpi-label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.kpi-value {
+  font-size: 22px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 口径说明 ---------- */
+
+.notes {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gridline);
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 900px;
+}
+
+.notes h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.notes ul { margin: 0; padding-left: 18px; }
+.notes li { margin-bottom: 5px; }
+.notes strong { color: var(--text-secondary); font-weight: 600; }
+
+.notes code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--text-primary) 7%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meter-fill { transition: none; }
+}

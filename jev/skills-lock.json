@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "skills": {
+    "dxh-frontend": {
+      "source": "/Users/jianfehuang/Downloads/work-max/dxh_playground/dxh-frontend",
+      "sourceType": "local",
+      "computedHash": "5d6ef5648bd8838d8f99778c43abcab63d519eb170242bc7fed6193a4711f76f"
+    },
+    "typesafe-ai": {
+      "source": "typesafe-ai/skills",
+      "sourceType": "github",
+      "skillPath": "skills/typesafe-ai/SKILL.md",
+      "computedHash": "9cd84c5e535dec8dec59917c110f9c00b4a61faadb86b432ec7e41051170af12"
+    }
+  }
+}

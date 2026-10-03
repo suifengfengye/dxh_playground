@@ -1,0 +1,512 @@
+{
+  "01-Linux软件开发工程师": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "overall_fit": {
+        "type": "score",
+        "score": 0.11,
+        "confidence": 0.91,
+        "legend": {
+          "0": "完全不匹配：岗位的核心必备技能与候选人的技能栈没有交集，候选人无法胜任该岗位的主要职责。",
+          "1": "弱匹配：仅有少量边缘技能或软性条件吻合，核心必备技能明显缺失，需要一年以上的转岗学习才能胜任。",
+          "2": "部分匹配：岗位约一半的要求能够满足，但至少存在一项重要的必备技能或经验短板，需要在补充学习或他人协助下才能开展工作。",
+          "3": "较好匹配：绝大多数必备技能与经验要求都能满足，仅有个别非关键项缺失或未在简历中体现。",
+          "4": "高度匹配：岗位的必备技能、经验范围与领域背景几乎逐条吻合，候选人可直接胜任，且具备明显的加分项。"
+        },
+        "probabilities": {
+          "0": 0.89,
+          "1": 0.11,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "skill_coverage": {
+        "type": "choice",
+        "choice": "missing_most",
+        "confidence": 1.0,
+        "probabilities": {
+          "missing_most": 1.0,
+          "full": 0.0,
+          "mostly_generic_only": 0.0,
+          "missing_specialized": 0.0
+        }
+      },
+      "specialized_skills_present": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "experience_years_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "not_met": 0.0,
+          "met": 0.0,
+          "unknown": 1.0
+        }
+      },
+      "education_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "not_met": 0.0,
+          "met": 0.0,
+          "unknown": 1.0
+        }
+      },
+      "domain_relevance": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "disqualifying_gap": {
+        "type": "choice",
+        "choice": "embedded_hardware",
+        "confidence": 0.7,
+        "probabilities": {
+          "programming_language": 0.26,
+          "backend_framework": 0.0,
+          "education_or_years": 0.0,
+          "embedded_hardware": 0.74,
+          "machine_vision": 0.0,
+          "backend_data": 0.0,
+          "no_blocker": 0.0
+        }
+      },
+      "resume_sufficiency": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    "usage": {
+      "input_tokens": 3372,
+      "output_tokens": 295
+    }
+  },
+  "02-嵌入式软件工程师": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "overall_fit": {
+        "type": "score",
+        "score": 0.51,
+        "confidence": 0.59,
+        "legend": {
+          "0": "完全不匹配：岗位的核心必备技能与候选人的技能栈没有交集，候选人无法胜任该岗位的主要职责。",
+          "1": "弱匹配：仅有少量边缘技能或软性条件吻合，核心必备技能明显缺失，需要一年以上的转岗学习才能胜任。",
+          "2": "部分匹配：岗位约一半的要求能够满足，但至少存在一项重要的必备技能或经验短板，需要在补充学习或他人协助下才能开展工作。",
+          "3": "较好匹配：绝大多数必备技能与经验要求都能满足，仅有个别非关键项缺失或未在简历中体现。",
+          "4": "高度匹配：岗位的必备技能、经验范围与领域背景几乎逐条吻合，候选人可直接胜任，且具备明显的加分项。"
+        },
+        "probabilities": {
+          "0": 0.49,
+          "1": 0.51,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "skill_coverage": {
+        "type": "choice",
+        "choice": "missing_most",
+        "confidence": 0.99,
+        "probabilities": {
+          "missing_specialized": 0.01,
+          "full": 0.0,
+          "mostly_generic_only": 0.0,
+          "missing_most": 0.99
+        }
+      },
+      "specialized_skills_present": {
+        "type": "noul",
+        "noul": 0.03
+      },
+      "experience_years_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "unknown": 1.0,
+          "met": 0.0,
+          "not_met": 0.0
+        }
+      },
+      "education_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "unknown": 1.0,
+          "met": 0.0,
+          "not_met": 0.0
+        }
+      },
+      "domain_relevance": {
+        "type": "noul",
+        "noul": 0.03
+      },
+      "disqualifying_gap": {
+        "type": "choice",
+        "choice": "embedded_hardware",
+        "confidence": 0.77,
+        "probabilities": {
+          "machine_vision": 0.0,
+          "education_or_years": 0.0,
+          "backend_data": 0.0,
+          "no_blocker": 0.0,
+          "programming_language": 0.19,
+          "embedded_hardware": 0.81,
+          "backend_framework": 0.0
+        }
+      },
+      "resume_sufficiency": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    "usage": {
+      "input_tokens": 3460,
+      "output_tokens": 295
+    }
+  },
+  "03-自动化视觉软件开发": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "overall_fit": {
+        "type": "score",
+        "score": 0.01,
+        "confidence": 0.99,
+        "legend": {
+          "0": "完全不匹配：岗位的核心必备技能与候选人的技能栈没有交集，候选人无法胜任该岗位的主要职责。",
+          "1": "弱匹配：仅有少量边缘技能或软性条件吻合，核心必备技能明显缺失，需要一年以上的转岗学习才能胜任。",
+          "2": "部分匹配：岗位约一半的要求能够满足，但至少存在一项重要的必备技能或经验短板，需要在补充学习或他人协助下才能开展工作。",
+          "3": "较好匹配：绝大多数必备技能与经验要求都能满足，仅有个别非关键项缺失或未在简历中体现。",
+          "4": "高度匹配：岗位的必备技能、经验范围与领域背景几乎逐条吻合，候选人可直接胜任，且具备明显的加分项。"
+        },
+        "probabilities": {
+          "0": 0.99,
+          "1": 0.01,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "skill_coverage": {
+        "type": "choice",
+        "choice": "missing_most",
+        "confidence": 1.0,
+        "probabilities": {
+          "missing_most": 1.0,
+          "full": 0.0,
+          "mostly_generic_only": 0.0,
+          "missing_specialized": 0.0
+        }
+      },
+      "specialized_skills_present": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "experience_years_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "met": 0.0,
+          "not_met": 0.0,
+          "unknown": 1.0
+        }
+      },
+      "education_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "met": 0.0,
+          "not_met": 0.0,
+          "unknown": 1.0
+        }
+      },
+      "domain_relevance": {
+        "type": "noul",
+        "noul": 0.02
+      },
+      "disqualifying_gap": {
+        "type": "choice",
+        "choice": "machine_vision",
+        "confidence": 0.7,
+        "probabilities": {
+          "machine_vision": 0.75,
+          "backend_data": 0.0,
+          "backend_framework": 0.0,
+          "programming_language": 0.25,
+          "embedded_hardware": 0.0,
+          "no_blocker": 0.0,
+          "education_or_years": 0.0
+        }
+      },
+      "resume_sufficiency": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    "usage": {
+      "input_tokens": 3580,
+      "output_tokens": 294
+    }
+  },
+  "04-后台软件开发工程师": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "overall_fit": {
+        "type": "score",
+        "score": 0.77,
+        "confidence": 0.8,
+        "legend": {
+          "0": "完全不匹配：岗位的核心必备技能与候选人的技能栈没有交集，候选人无法胜任该岗位的主要职责。",
+          "1": "弱匹配：仅有少量边缘技能或软性条件吻合，核心必备技能明显缺失，需要一年以上的转岗学习才能胜任。",
+          "2": "部分匹配：岗位约一半的要求能够满足，但至少存在一项重要的必备技能或经验短板，需要在补充学习或他人协助下才能开展工作。",
+          "3": "较好匹配：绝大多数必备技能与经验要求都能满足，仅有个别非关键项缺失或未在简历中体现。",
+          "4": "高度匹配：岗位的必备技能、经验范围与领域背景几乎逐条吻合，候选人可直接胜任，且具备明显的加分项。"
+        },
+        "probabilities": {
+          "0": 0.23,
+          "1": 0.77,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "skill_coverage": {
+        "type": "choice",
+        "choice": "missing_most",
+        "confidence": 0.98,
+        "probabilities": {
+          "missing_most": 0.98,
+          "full": 0.0,
+          "mostly_generic_only": 0.0,
+          "missing_specialized": 0.02
+        }
+      },
+      "specialized_skills_present": {
+        "type": "noul",
+        "noul": 0.07
+      },
+      "experience_years_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "not_met": 0.0,
+          "met": 0.0,
+          "unknown": 1.0
+        }
+      },
+      "education_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "not_met": 0.0,
+          "met": 0.0,
+          "unknown": 1.0
+        }
+      },
+      "domain_relevance": {
+        "type": "noul",
+        "noul": 0.06
+      },
+      "disqualifying_gap": {
+        "type": "choice",
+        "choice": "programming_language",
+        "confidence": 0.94,
+        "probabilities": {
+          "programming_language": 0.95,
+          "backend_framework": 0.01,
+          "machine_vision": 0.0,
+          "education_or_years": 0.0,
+          "embedded_hardware": 0.0,
+          "no_blocker": 0.0,
+          "backend_data": 0.04
+        }
+      },
+      "resume_sufficiency": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    "usage": {
+      "input_tokens": 3596,
+      "output_tokens": 295
+    }
+  },
+  "05-前端开发": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "overall_fit": {
+        "type": "score",
+        "score": 3.63,
+        "confidence": 0.69,
+        "legend": {
+          "0": "完全不匹配：岗位的核心必备技能与候选人的技能栈没有交集，候选人无法胜任该岗位的主要职责。",
+          "1": "弱匹配：仅有少量边缘技能或软性条件吻合，核心必备技能明显缺失，需要一年以上的转岗学习才能胜任。",
+          "2": "部分匹配：岗位约一半的要求能够满足，但至少存在一项重要的必备技能或经验短板，需要在补充学习或他人协助下才能开展工作。",
+          "3": "较好匹配：绝大多数必备技能与经验要求都能满足，仅有个别非关键项缺失或未在简历中体现。",
+          "4": "高度匹配：岗位的必备技能、经验范围与领域背景几乎逐条吻合，候选人可直接胜任，且具备明显的加分项。"
+        },
+        "probabilities": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.01,
+          "3": 0.35,
+          "4": 0.64
+        }
+      },
+      "skill_coverage": {
+        "type": "choice",
+        "choice": "mostly_generic_only",
+        "confidence": 0.9,
+        "probabilities": {
+          "missing_most": 0.0,
+          "full": 0.01,
+          "mostly_generic_only": 0.93,
+          "missing_specialized": 0.06
+        }
+      },
+      "specialized_skills_present": {
+        "type": "noul",
+        "noul": 0.89
+      },
+      "experience_years_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 0.99,
+        "probabilities": {
+          "met": 0.0,
+          "unknown": 1.0,
+          "not_met": 0.0
+        }
+      },
+      "education_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "met": 0.0,
+          "unknown": 1.0,
+          "not_met": 0.0
+        }
+      },
+      "domain_relevance": {
+        "type": "noul",
+        "noul": 0.98
+      },
+      "disqualifying_gap": {
+        "type": "choice",
+        "choice": "no_blocker",
+        "confidence": 0.83,
+        "probabilities": {
+          "embedded_hardware": 0.0,
+          "machine_vision": 0.0,
+          "no_blocker": 0.86,
+          "backend_framework": 0.0,
+          "backend_data": 0.0,
+          "education_or_years": 0.14,
+          "programming_language": 0.0
+        }
+      },
+      "resume_sufficiency": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    "usage": {
+      "input_tokens": 3765,
+      "output_tokens": 295
+    }
+  },
+  "06-全栈开发工程师": {
+    "model": "jev-1.13.0",
+    "answers": {
+      "overall_fit": {
+        "type": "score",
+        "score": 1.16,
+        "confidence": 0.82,
+        "legend": {
+          "0": "完全不匹配：岗位的核心必备技能与候选人的技能栈没有交集，候选人无法胜任该岗位的主要职责。",
+          "1": "弱匹配：仅有少量边缘技能或软性条件吻合，核心必备技能明显缺失，需要一年以上的转岗学习才能胜任。",
+          "2": "部分匹配：岗位约一半的要求能够满足，但至少存在一项重要的必备技能或经验短板，需要在补充学习或他人协助下才能开展工作。",
+          "3": "较好匹配：绝大多数必备技能与经验要求都能满足，仅有个别非关键项缺失或未在简历中体现。",
+          "4": "高度匹配：岗位的必备技能、经验范围与领域背景几乎逐条吻合，候选人可直接胜任，且具备明显的加分项。"
+        },
+        "probabilities": {
+          "0": 0.03,
+          "1": 0.78,
+          "2": 0.19,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "skill_coverage": {
+        "type": "choice",
+        "choice": "missing_most",
+        "confidence": 0.77,
+        "probabilities": {
+          "missing_specialized": 0.17,
+          "full": 0.0,
+          "mostly_generic_only": 0.0,
+          "missing_most": 0.83
+        }
+      },
+      "specialized_skills_present": {
+        "type": "noul",
+        "noul": 0.13
+      },
+      "experience_years_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "unknown": 1.0,
+          "met": 0.0,
+          "not_met": 0.0
+        }
+      },
+      "education_met": {
+        "type": "choice",
+        "choice": "unknown",
+        "confidence": 1.0,
+        "probabilities": {
+          "unknown": 1.0,
+          "met": 0.0,
+          "not_met": 0.0
+        }
+      },
+      "domain_relevance": {
+        "type": "noul",
+        "noul": 0.54
+      },
+      "disqualifying_gap": {
+        "type": "choice",
+        "choice": "programming_language",
+        "confidence": 0.67,
+        "probabilities": {
+          "backend_data": 0.01,
+          "education_or_years": 0.0,
+          "programming_language": 0.72,
+          "no_blocker": 0.0,
+          "machine_vision": 0.0,
+          "embedded_hardware": 0.0,
+          "backend_framework": 0.27
+        }
+      },
+      "resume_sufficiency": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    "usage": {
+      "input_tokens": 3812,
+      "output_tokens": 295
+    }
+  }
+}
