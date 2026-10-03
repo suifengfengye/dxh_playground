@@ -1,7 +1,69 @@
-**/node_modules/**
-**/dist/**
-.vscode
-.env
+# ==================== 通用 ====================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+.idea/
+.vscode/
 
-.trae
-.agents
+# 环境变量（保留 .env.example 这类示例文件）
+.env
+.env.*
+!.env.example
+
+# ==================== Python ====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+ENV/
+.python-version
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.so
+*.dylib
+
+# ==================== Node / JS / TS ====================
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+.yarnrc.yml
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==================== 构建产物 / 框架缓存 ====================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+.vite/
+.turbo/
+.parcel-cache/
+.cache/
+storybook-static/
+coverage/
+
+# ==================== 工具 ====================
+.trae/
+.agents/
