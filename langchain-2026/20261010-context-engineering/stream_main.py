@@ -2,7 +2,7 @@ import json
 
 from langchain_core.messages import ToolMessage
 
-from context_agent import agent
+from context_agent import agent, Context
 
 thread_config = {"configurable": {"thread_id": "1"}}
 
@@ -109,6 +109,7 @@ while True:
         {"messages": [{"role": "user", "content": user_input}]},
         thread_config,
         stream_mode=["messages", "updates"],
+        context=Context(user_id="dxh_20261011")
     )
     print("Agent>>>: ", end="")
 
