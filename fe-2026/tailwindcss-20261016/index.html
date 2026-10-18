@@ -6,16 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tailwindcss-20261016</title>
   </head>
-  <body class="bg-taupe-950 text-white space-y-4">
+  <body class="bg-dark-blue text-white">
     <!-- <div id="app"></div> -->
-     <h1 class="font-bold text-4xl">测试一下 tailwindcss 的H1</h1>
-     <p>
-      这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本
-      这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本
-      这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本
-      这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本这是一段文本
-    </p>
-    <a> Click Me</a>
+
+    <header class="max-w-3xl lg:max-w-5xl mx-auto px-5 py-3">
+      <nav>
+        <ul class="uppercase flex justify-center sm:justify-between tracking-wider gap-x-4 gap-y-1 flex-wrap">
+          <li class="me-auto"><a href="" class="hover:bg-fuchsia-700 transition-colors p-1 rounded-sm">Home</a></li>
+          <li><a href="" class="hover:bg-fuchsia-700 transition-colors p-1 rounded-sm">Start Here</a></li>
+          <li><a href="" class="hover:bg-fuchsia-700 transition-colors p-1 rounded-sm">Projects</a></li>
+          <li><a href="" class="hover:bg-fuchsia-700 transition-colors p-1 rounded-sm">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="max-w-3xl lg:max-w-5xl  mx-auto px-5 py-12 text-center grid gap-5 items-center lg:grid-cols-2">
+
+      <img src="https://gips3.baidu.com/it/u=4261102772,1669669862&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=720" alt="" 
+      class="rounded-xl"
+      />
+      <div class="space-y-5">
+        <h1 class="font-bold text-4xl py-5">让我们开始学习 tailwind</h1>
+        <p>
+          Tailwind 是**实用优先（utility-first）**的 CSS 框架，不提供预设组件，而是内置大量原子化 CSS 类。直接在 HTML 上加类名（如`p-4 bg-blue-500`）就能写样式，不用单独写 css 文件。
+          优势：开发快、不用自定义命名 css 类；配合 JIT 模式，打包只保留用到的样式，体积很小。
+          短板：HTML 会变得臃肿，需要记忆大量工具类，复杂组件要自己封装。
+        </p>
+        <a class="button"> Click Me</a>
+      </div>
+    </section>
+
+    <section class="max-w-3xl lg:max-w-5xl mx-auto grid gap-5 grid-cols-auto-fit">
+      <h2 class="text-3xl font-bold text-center col-span-full mb-4">Resource</h2>
+      <div class="bg-blue-800 bg-linear-to-bl from-purple-800 to-blue-800 even:bg-linear-to-br rounded-md space-y-2 p-3">
+        <h3 class="text-lg font-bold">What is Tailwind</h3>
+        <p>
+          Tailwind 是**实用优先（utility-first）**的 CSS 框架，不提供预设组件，而是内置大量原子化 CSS 类。
+        </p>
+        <a class="font-bold text-fuchsia-300 hover:text-white transition-colors after:content-['>'] after:ml-1 after:opacity-0 hover:after:opacity-100">Read More</a>
+      </div>
+      <div class="bg-blue-800 bg-linear-to-bl from-purple-800 to-blue-800 even:bg-linear-to-br rounded-md space-y-2 p-3">
+        <h3 class="text-lg font-bold">What is Tailwind</h3>
+        <p>
+          Tailwind 是**实用优先（utility-first）**的 CSS 框架，不提供预设组件，而是内置大量原子化 CSS 类。
+        </p>
+        <a class="font-bold text-fuchsia-300 hover:text-white transition-colors after:content-['>'] after:ml-1 after:opacity-0 hover:after:opacity-100">Read More</a>
+      </div>
+      <div class="bg-blue-800 bg-linear-to-bl from-purple-800 to-blue-800 even:bg-linear-to-br rounded-md space-y-2 p-3">
+        <h3 class="text-lg font-bold">What is Tailwind</h3>
+        <p>
+          Tailwind 是**实用优先（utility-first）**的 CSS 框架，不提供预设组件，而是内置大量原子化 CSS 类。
+        </p>
+        <a class="font-bold text-fuchsia-300 hover:text-white transition-colors after:content-['>'] after:ml-1 after:opacity-0 hover:after:opacity-100">Read More</a>
+      </div>
+      <div class="bg-blue-800 bg-linear-to-bl from-purple-800 to-blue-800 even:bg-linear-to-brs rounded-md space-y-2 p-3">
+        <h3 class="text-lg font-bold">What is Tailwind</h3>
+        <p>
+          Tailwind 是**实用优先（utility-first）**的 CSS 框架，不提供预设组件，而是内置大量原子化 CSS 类。
+        </p>
+        <a class="font-bold text-fuchsia-300 hover:text-white transition-colors after:content-['>'] after:ml-1 after:opacity-0 hover:after:opacity-100">Read More</a>
+      </div>
+      <div class="bg-blue-800 bg-linear-to-bl from-purple-800 to-blue-800 even:bg-linear-to-br rounded-md space-y-2 p-3">
+        <h3 class="text-lg font-bold">What is Tailwind</h3>
+        <p>
+          Tailwind 是**实用优先（utility-first）**的 CSS 框架，不提供预设组件，而是内置大量原子化 CSS 类。
+        </p>
+        <a class="font-bold text-fuchsia-300 hover:text-white transition-colors after:content-['>'] after:ml-1 after:opacity-0 hover:after:opacity-100">Read More</a>
+      </div>
+    </section>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

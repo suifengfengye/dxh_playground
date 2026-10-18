@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
-/* @theme {
-  --spacing: 0.5rem;
-} */
+@theme {
+  --color-dark-blue: #101044;
+}
+
+@utility grid-cols-auto-fit{
+  grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .button {
+    @apply bg-fuchsia-700 rounded-full py-2 px-5 hover:bg-fuchsia-600 hover:cursor-pointer transition-colors inline-block;
+  }
+}
